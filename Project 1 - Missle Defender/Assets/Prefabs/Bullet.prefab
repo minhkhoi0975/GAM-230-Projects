@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  target: {x: 0, y: 0, z: 0}
+  destination: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
-  maxDistanceFromOwner: 100
+  maxDistanceFromOwner: 30
+  bulletExplosion: {fileID: 9094345100957260327, guid: c5b6a23ae9ad2664fbb75eaae24c77ad,
+    type: 3}
 --- !u!54 &2514178864590940856
 Rigidbody:
   m_ObjectHideFlags: 0

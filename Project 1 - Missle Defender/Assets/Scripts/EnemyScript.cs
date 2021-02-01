@@ -29,7 +29,7 @@ public class EnemyScript : MonoBehaviour
         if(other.CompareTag("Bullet"))
         {
             // Increase player's score.
-            PlayerScript.score++;
+            GameManagerScript.Instance.score++;
 
             // Destroy the enemy and the bullet.
             Destroy(other.gameObject);
