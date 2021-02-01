@@ -53,7 +53,7 @@ public class EnemySpawnerScript : MonoBehaviour
                 }
                 break;
             case EnemySpawnerState.NOSPAWN:
-                if(allEnemiesAreDead())
+                if(allEnemiesAreDead() && GameManagerScript.Instance.numberOfLives > 0)
                 {
                     DestroyEnemiesInPreviousWave();
                     enemySpawnerState = EnemySpawnerState.TRANSITION;
