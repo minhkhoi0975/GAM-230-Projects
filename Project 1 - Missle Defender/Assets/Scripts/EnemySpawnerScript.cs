@@ -15,6 +15,7 @@ public enum EnemySpawnerState
 public class EnemySpawnerScript : MonoBehaviour
 {
     public float waveTime = 10.0f;                                                  // The amount of time (in seconds) per wave.
+    public float transitionTime = 3.0f;                                             // The amount of time (in seconds) before the next wave starts.
     public static float timer;                                                      // The remaining time of the current wave.
     public static int   currentWave = 1;
 
@@ -59,7 +60,7 @@ public class EnemySpawnerScript : MonoBehaviour
                 }
                 break;
             case EnemySpawnerState.TRANSITION:
-                timer += Time.deltaTime*2;
+                timer += Time.deltaTime* (waveTime / transitionTime);
                 if(timer > waveTime)
                 {
                     timer = waveTime;
