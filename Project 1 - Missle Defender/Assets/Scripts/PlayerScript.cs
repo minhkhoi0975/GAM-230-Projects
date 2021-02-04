@@ -9,6 +9,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject playerHurtParticleEffect;    // The particle effect when the player is hit by the enemy.
 
     private float rotationAngle = 0.0f;
+    private int numberOfLives = 3;
+    private int score;
+
+    public int NumberOfLives { get { return numberOfLives; } }
+    public int Score { get { return score; } set { score = value; } }
+
 
     // Update is called once per frame
     void Update()
@@ -18,7 +24,7 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, rotationAngle, 0.0f);
 
         // When the player presses the left mouse button, the character shoots a bullet.
-        if(Input.GetButtonDown("Fire1") && GameManagerScript.Instance.numberOfLives > 0)
+        if(Input.GetButtonDown("Fire1") && isAlive())
         {
             // Spawn a bullet.
             GameObject newBullet = Instantiate(bulletToSpawn, transform.position, transform.rotation);
@@ -42,7 +48,7 @@ public class PlayerScript : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             // Decrement the number of lives, but don't make it below 0.
-            GameManagerScript.Instance.numberOfLives = (GameManagerScript.Instance.numberOfLives == 0 ? 0 : GameManagerScript.Instance.numberOfLives - 1);
+            numberOfLives = (numberOfLives == 0 ? 0 : numberOfLives - 1);
 
             // Create "player hurt" particles.
             GameObject playerHurt = Instantiate(playerHurtParticleEffect, transform.position, transform.rotation);
@@ -51,5 +57,11 @@ public class PlayerScript : MonoBehaviour
             // Destroy the enemy.
             Destroy(other.gameObject);
         }
+    }
+
+    // Check if the number of lives of the player is greater than 0.
+    public bool isAlive()
+    {
+        return numberOfLives > 0;
     }
 }

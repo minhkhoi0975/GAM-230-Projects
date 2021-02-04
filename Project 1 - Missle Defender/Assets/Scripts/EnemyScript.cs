@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public GameObject target;            // The target the enemy moves to.
+    public GameObject player;            // The player the enemy must attack.
     public float moveSpeed = 5.0f;       // The move speed of the enemy.
-    public float rotationSpeed = 30.0f;
+    public float rotationSpeed = 30.0f;  // The rotation speed of the enemy.
 
-    // Start is called before the first frame update
+    private PlayerScript playerScript;
+
     void Start()
     {
-        
+        playerScript = player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Translate the enemy.
-        transform.position += (target.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+        if (player != null)
+        {
+            // Translate towards the target.
+            transform.position += (player.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
 
-        // Rotate the enemy.
-        transform.RotateAround(transform.position, target.transform.position - transform.position, rotationSpeed * Time.deltaTime);
+            // Rotate the enemy around the axis that goes throw the enemy and the target.
+            transform.RotateAround(transform.position, player.transform.position - transform.position, rotationSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +33,13 @@ public class EnemyScript : MonoBehaviour
         if(other.CompareTag("Bullet"))
         {
             // Increase player's score.
-            GameManagerScript.Instance.score++;
+            playerScript.Score = playerScript.Score + 1;
+
+            // If the score is greater than the highest score, update the highest score.
+            if(playerScript.Score > GameManagerScript.Instance.HighestScore)
+            {
+                GameManagerScript.Instance.HighestScore = playerScript.Score;
+            }
 
             // Destroy the enemy and the bullet.
             Destroy(other.gameObject);

@@ -16,17 +16,21 @@ public class EnemySpawnerScript : MonoBehaviour
 {
     public float waveTime = 10.0f;                                                  // The amount of time (in seconds) per wave.
     public float transitionTime = 3.0f;                                             // The amount of time (in seconds) before the next wave starts.
-    public static float timer;                                                      // The remaining time of the current wave.
-    public static int   currentWave = 1;
-
-    [SerializeField] private GameObject player;                                     // The target who the enemy moves to.
+    
+    [SerializeField] private GameObject player;                                     // The target who the enemies move to.
     [SerializeField] private GameObject enemyToSpawn;                               // The prefab of the enemy to be spawned.
     [SerializeField] private float distanceFromPlayer = 100.0f;                     // The 2D distance (xz plane) from the enemy to the player when the enemy is spawned.
     [SerializeField] private float minHeight = 5.0f;                                // The minimum height of the enemy when it is spawned.
     [SerializeField] private float maxHeight = 20.0f;                               // The maximum height of the enemy when it is spawned.
 
+    private float timer;                                                            // The remaining time of the current wave.
+    private int currentWave = 1;                                                    // The current wave.
     private List<GameObject> enemies = new List<GameObject>();                      // Used to manage the enemies.
-    public static EnemySpawnerState enemySpawnerState = EnemySpawnerState.SPAWN;
+    private EnemySpawnerState enemySpawnerState = EnemySpawnerState.SPAWN;    // Used to manage the state of the spawner.
+
+    public float Timer { get { return timer; } }
+    public int CurrentWave { get { return currentWave; } }
+    public EnemySpawnerState EnemySpawnerState { get { return enemySpawnerState; } }
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +57,7 @@ public class EnemySpawnerScript : MonoBehaviour
                 }
                 break;
             case EnemySpawnerState.NOSPAWN:
-                if(allEnemiesAreDead() && GameManagerScript.Instance.numberOfLives > 0)
+                if(allEnemiesAreDead() && player.GetComponent<PlayerScript>().isAlive())
                 {
                     DestroyEnemiesInPreviousWave();
                     enemySpawnerState = EnemySpawnerState.TRANSITION;
@@ -90,7 +94,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
                 // Set the properties of the enemy.
                 EnemyScript enemyScript = enemies[i].GetComponent<EnemyScript>();
-                enemyScript.target = player;
+                enemyScript.player = player;
             }
         }
     }
