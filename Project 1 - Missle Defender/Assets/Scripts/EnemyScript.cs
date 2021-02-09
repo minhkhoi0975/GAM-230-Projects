@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * EnemyScript.cs
+ * Author: Khoi Ho
+ * Description: This script handles the movement of an enemy and destroys the enemy when it is hit by a bullet.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

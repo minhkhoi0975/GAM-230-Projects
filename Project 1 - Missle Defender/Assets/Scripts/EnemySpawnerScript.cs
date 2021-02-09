@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿/**
+ * EnemySpawnerScript.cs
+ * Author: Khoi Ho
+ * Description: This script handles the behavior of the enemy spawner.
+ */
+
+using System.Collections.Generic;
 using UnityEngine;
 
 // The states of the enemy spawner:
@@ -26,7 +32,7 @@ public class EnemySpawnerScript : MonoBehaviour
     private float timer;                                                            // The remaining time of the current wave.
     private int currentWave = 1;                                                    // The current wave.
     private List<GameObject> enemies = new List<GameObject>();                      // Used to manage the enemies.
-    private EnemySpawnerState enemySpawnerState = EnemySpawnerState.SPAWN;    // Used to manage the state of the spawner.
+    private EnemySpawnerState enemySpawnerState = EnemySpawnerState.SPAWN;          // Used to manage the state of the spawner.
 
     public float Timer { get { return timer; } }
     public int CurrentWave { get { return currentWave; } }

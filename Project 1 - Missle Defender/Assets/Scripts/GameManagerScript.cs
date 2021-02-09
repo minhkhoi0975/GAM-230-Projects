@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * GameManagerScriptScript.cs
+ * Author: Khoi Ho
+ * Description: This script stores fields that are not reset when the game scene is reloaded.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

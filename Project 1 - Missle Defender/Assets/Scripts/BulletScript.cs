@@ -1,18 +1,25 @@
-﻿using System.Collections;
+﻿/**
+ * BulletScript.cs
+ * Author: Khoi Ho
+ * Description: This script handles the movement of a bullet, destroys the bullet when it hits an enemy or stay too far from the enemy, and creates a particle effect when the
+ *              bullet is destroyed.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    [SerializeField] private float speed = 20.0f;  // The speed of the bullet.
-    public Vector3 destination;                    // Where does the bullet go to?
-    public GameObject player;                      // The player who shoots the bullet.
+    [SerializeField] private float speed = 20.0f;                // The speed of the bullet.
+    public Vector3 destination;                                  // Where does the bullet go to?
+    public GameObject player;                                    // The player who shot the bullet.
 
     [SerializeField] private float maxDistanceFromOwner = 50.0f; // If the distance from the bullet to the owner is greater than the maximum distance, the bullet is destroyed.
     public float MaxDistanceFromOwner { get { return maxDistanceFromOwner; } }
 
 
-    [SerializeField] private GameObject bulletExplosion;     // The particle effect that happens when the bullet is destroyed.
+    [SerializeField] private GameObject bulletExplosion;         // The particle effect when the bullet is destroyed.
 
     // Update is called once per frame
     void Update()

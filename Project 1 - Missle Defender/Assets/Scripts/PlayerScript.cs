@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * PlayerScript.cs
+ * Author: Khoi Ho
+ * Description: This script deals with the player control and creates a particle effect when the player is hit by an enemy.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

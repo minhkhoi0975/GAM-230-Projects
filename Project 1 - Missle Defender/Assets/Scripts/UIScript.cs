@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * UIScript.cs
+ * Author: Khoi Ho
+ * Description: This script updates the UI.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +12,8 @@ using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
-    public GameObject player;        // Needed to show the score and the number of lives of the player.
-    public GameObject enemySpawner;  // Needed to show the timer of the enemy spawner.
+    public GameObject player;                           // Needed to show the score and the number of lives of the player.
+    public GameObject enemySpawner;                     // Needed to show the timer of the enemy spawner.
 
     private PlayerScript playerScript;
     private EnemySpawnerScript enemySpawnerScript;
