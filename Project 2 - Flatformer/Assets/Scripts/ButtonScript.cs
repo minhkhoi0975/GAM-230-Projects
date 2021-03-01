@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
+    [SerializeField] private AudioClip buttonPresseSFX;   // The sound effect when the player clicks the button.
+
     [SerializeField] private GameObject[] affectedGameObjects;
 
     [SerializeField] private float cooldown = 5.0f; // How long before the switch can be pressed again.
@@ -41,6 +43,8 @@ public class ButtonScript : MonoBehaviour
             }
 
             currentCoolDown = cooldown;
+
+            other.gameObject.GetComponent<AudioSource>().PlayOneShot(buttonPresseSFX, 1.0f);
         }
     }
 }

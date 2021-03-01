@@ -636,4 +636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633992d94a25512498d91aa4c53b13da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonPresseSFX: {fileID: 8300000, guid: 1e76e1dddc8b08148b17b9bd73bb926c, type: 3}
   affectedGameObjects: []
+  cooldown: 5

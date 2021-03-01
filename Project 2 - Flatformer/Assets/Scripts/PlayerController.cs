@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rigidBody;
     [SerializeField] private Camera cam;
+    [SerializeField] private AudioClip jumpSFX; // The sound effect when player jumps.
 
-    public float moveForceMagnitude = 2.0f;
+    public float moveForceMagnitude = 3.0f;
     public float jumpForceMagnitude = 10.0f;
 
     private int airJumpsLeft = 1;         // How many times can you jump when you are in the air?
     private float isGroundedTimer = -1f;  // Greater than 0?  You're grounded!
+
+    private Rigidbody rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -47,31 +47,24 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 relativeDirection = new Vector3(horizontal, 0f, vertical).normalized;   // Direction relative to the player.
+        Vector3 moveDirection = new Vector3(horizontal, 0f, vertical).normalized;   // Direction relative to the player.
 
-        if (relativeDirection.magnitude != 0f)
+        if (moveDirection.magnitude != 0f)
         {
-            float targetAngle = Mathf.Atan2(relativeDirection.x, relativeDirection.y) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            // rigidBody.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-            Vector3 moveForce = moveForceMagnitude * relativeDirection;
+            Vector3 moveForce = moveForceMagnitude * moveDirection;
 
             if(isGroundedTimer < 0.0f)
             {
-                moveForce = 0.7f * moveForce;  // Reduce the move force by 30% (0.3) if the player is in the air.
+                moveForce = 0.35f * moveForce;  // Reduce the move force by 65% if the player is in the air.
             }
 
             rigidBody.AddForce(cam.transform.rotation * moveForce, ForceMode.Impulse);
+
+            // Rotate the character to match the movement.
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(cam.transform.rotation*moveDirection), 0.5f);
         }
-
-        //rigidBody.velocity = moveVelocity;
-
-
-        //Vector3 facing = transform.forward;
-        //float t = 0.5f;  // Leaving this here (for now)...
-        // Linear interpolation
-        // Vector3 interpolatedFacing = (1-t)*facing + t*relativeDirection;
-        //transform.rotation = Quaternion.LookRotation(interpolatedFacing);
     }
 
     private void OnTriggerStay(Collider other)
@@ -87,5 +80,7 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = newVelocity;
 
         rigidBody.AddForce(jumpForceMagnitude * Vector3.up, ForceMode.Impulse);
+
+        GetComponent<AudioSource>().PlayOneShot(jumpSFX, 0.1f);
     }
 }
