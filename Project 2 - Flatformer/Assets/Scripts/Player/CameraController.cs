@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * CameraController.cs
+ * Description: This script handles the movement of a camera.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,16 +13,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private Vector3 targetOffset = new Vector3(0, 3, -8);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
-    {
-        // TODO: Explain this better
+    {      
+        // Rotate the camera to look at the target.
         Vector3 targetXZ = target.transform.position;
         targetXZ.y = 0f;
 
@@ -25,7 +25,8 @@ public class CameraController : MonoBehaviour
 
         Vector3 toTarget = (targetXZ - sourceXZ).normalized;
         transform.rotation = Quaternion.LookRotation(toTarget);
-        // TODO: Comment this better
+          
+        // Move the camera to keep the đistance between itself and the target.
         transform.position = target.transform.position + transform.rotation * targetOffset;
     }
 }

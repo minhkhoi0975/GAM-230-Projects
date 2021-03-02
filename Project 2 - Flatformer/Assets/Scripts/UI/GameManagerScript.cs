@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * GameCompletedMenuScript.cs
+ * Description: This script contains data that are not deleted when a new scene is loaded.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +20,7 @@ public class GameManagerScript : MonoBehaviour
         } 
     }
 
-    private int coinsCollected = 0;
+    private int coinsCollected = 0; // How many coins have the player collected?
 
     public int CoinsCollected
     {

@@ -1,4 +1,8 @@
-﻿// Used to view the scene in-game.
+﻿/**
+ * FreeCamera.cs
+ * Description: This script allows the user to move the camera freely. Note that that camera is only used for debugging.
+ * Programmer: Khoi Ho
+ */
 
 using UnityEngine;
 
@@ -12,36 +16,35 @@ public class FreeCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move the camera to the left/to the right/forward/backward.
         if (Input.GetKey(KeyCode.A))
         {
             transform.position -= transform.right * moveSpeed * Time.deltaTime;
         }
-
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += transform.right * moveSpeed * Time.deltaTime;
         }
-
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
-
         if (Input.GetKey(KeyCode.S))
         {
             transform.position -= transform.forward * moveSpeed * Time.deltaTime;
         }
 
+        // Hold the left mouse button to rotate the camera.
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             canBeRotated = true;
         }
-
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             canBeRotated = false;
         }
 
+        // Rotate the camera when the left mouse button is held.
         if (canBeRotated)
         {
             float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * rotationSpeed;

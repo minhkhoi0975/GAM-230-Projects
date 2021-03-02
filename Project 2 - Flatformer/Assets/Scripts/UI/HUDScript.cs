@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * HUDScript.cs
+ * Description: This script handles the HUD.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

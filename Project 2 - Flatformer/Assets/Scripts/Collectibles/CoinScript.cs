@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * CoinScript.cs
+ * Description: This script rotates a coin and destroys it when the character touches it.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +16,7 @@ public class CoinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Rotate the coin.
         transform.Rotate(0.0f, 0.0f, rotationSpeed*Time.deltaTime);
     }
 
@@ -17,8 +24,13 @@ public class CoinScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            // Increment the number of collected coins.
             GameManagerScript.Instance.CoinsCollected++;
+
+            // Play a sound effect.
             other.gameObject.GetComponent<AudioSource>().PlayOneShot(pickUpSFX, 0.5f);
+
+            // Destroy the coin.
             Destroy(gameObject);
         }
     }

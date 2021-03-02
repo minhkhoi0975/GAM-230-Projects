@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * PlayerController.cs
+ * Description: This script handles the movement of the character.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForceMagnitude = 10.0f;
 
     private int airJumpsLeft = 1;         // How many times can you jump when you are in the air?
-    private float isGroundedTimer = -1f;  // Greater than 0?  You're grounded!
+    private float isGroundedTimer = -1f;  // Greater than 0? You're grounded!
 
     private Rigidbody rigidBody;
 
@@ -28,11 +34,14 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump"))
         {
+            // Jump from the ground.
             if (isGroundedTimer > 0f)
             {
                 Jump();
                 isGroundedTimer = -1;
             }
+
+            // Another jump while in the air.
             else if(airJumpsLeft > 0)
             {
                 Jump();
@@ -47,23 +56,25 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(horizontal, 0f, vertical).normalized;   // Direction relative to the player.
+        Vector3 localMoveDirection = new Vector3(horizontal, 0f, vertical).normalized;           // The move direction that is relative to the character itself.
+        Vector3 worldMoveDirection = (cam.transform.rotation * localMoveDirection).normalized;   // The move direction that is relative to the world.
 
-        if (moveDirection.magnitude != 0f)
+        if (worldMoveDirection.magnitude != 0f)
         {
-            // rigidBody.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            // Calculate the move force.
+            Vector3 moveForce = moveForceMagnitude * worldMoveDirection;
 
-            Vector3 moveForce = moveForceMagnitude * moveDirection;
-
-            if(isGroundedTimer < 0.0f)
+            // Reduce the move force by 65% if the character is in the air.
+            if (isGroundedTimer < 0.0f)
             {
-                moveForce = 0.35f * moveForce;  // Reduce the move force by 65% if the player is in the air.
+                moveForce = 0.35f * moveForce;  
             }
 
-            rigidBody.AddForce(cam.transform.rotation * moveForce, ForceMode.Impulse);
+            // Move the character.
+            rigidBody.AddForce(moveForce, ForceMode.Impulse);
 
             // Rotate the character to match the movement.
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(cam.transform.rotation*moveDirection), 0.5f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(worldMoveDirection), 0.5f);
         }
     }
 

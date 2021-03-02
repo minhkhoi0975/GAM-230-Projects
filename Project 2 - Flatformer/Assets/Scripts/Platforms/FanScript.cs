@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * FanScript.cs
+ * Description: This script rotates a fan.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +20,9 @@ public class FanScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        // transform.Rotate(0.0f, 0.0f, rollSpeed * Time.deltaTime);
-
+        // Rotate the fan.
         Vector3 eulerAngleVelocity = new Vector3(0f, 0f, rollSpeed * Time.deltaTime);
         Quaternion quaternionVelocity = Quaternion.Euler(eulerAngleVelocity);
         rigidBody.MoveRotation(rigidBody.rotation * quaternionVelocity);

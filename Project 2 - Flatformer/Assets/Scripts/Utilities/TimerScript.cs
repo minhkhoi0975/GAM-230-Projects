@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * TimerScript.cs
+ * Description: This script handles the timer. When the timer reaches 0, the game loads the Game Over menu.
+ * Programmer: Khoi Ho
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
