@@ -57,7 +57,10 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 localMoveDirection = new Vector3(horizontal, 0f, vertical).normalized;           // The move direction that is relative to the character itself.
-        Vector3 worldMoveDirection = (cam.transform.rotation * localMoveDirection).normalized;   // The move direction that is relative to the world.
+
+        // Vector3 worldMoveDirection = (cam.transform.rotation * localMoveDirection).normalized;   // The move direction that is relative to the world.
+        Vector3 worldMoveDirection = cam.transform.rotation * localMoveDirection;
+        worldMoveDirection = new Vector3(worldMoveDirection.x, 0.0f, worldMoveDirection.z).normalized;
 
         if (worldMoveDirection.magnitude != 0f)
         {
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
             // Rotate the character to match the movement.
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(worldMoveDirection), 0.5f);
+            transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y, 0.0f);
         }
     }
 
