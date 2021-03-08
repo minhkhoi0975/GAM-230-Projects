@@ -23,7 +23,7 @@ public class FanScript : MonoBehaviour
     void FixedUpdate()
     {
         // Rotate the fan.
-        Vector3 eulerAngleVelocity = new Vector3(0f, 0f, rollSpeed * Time.deltaTime);
+        Vector3 eulerAngleVelocity = new Vector3(0f, 0f, rollSpeed * Time.fixedDeltaTime);
         Quaternion quaternionVelocity = Quaternion.Euler(eulerAngleVelocity);
         rigidBody.MoveRotation(rigidBody.rotation * quaternionVelocity);
     }

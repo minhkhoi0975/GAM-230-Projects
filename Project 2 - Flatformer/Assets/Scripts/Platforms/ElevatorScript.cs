@@ -32,7 +32,7 @@ public class ElevatorScript : MonoBehaviour
         rigidBody.MovePosition(Vector3.Lerp(position1.position, position2.position, t));
 
         // Calculate where the game object is between position 1 and position 2.
-        t += direction * Time.deltaTime / 1;
+        t += direction * Time.fixedDeltaTime / 1;
 
         // Reverse the direction if the game object moves to the end of the path.
         if(t <= 0.0f || t >= 1.0f)
