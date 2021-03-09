@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshCollider))]
 public class Cube: MonoBehaviour
 {
     private Mesh mesh;
@@ -18,9 +19,10 @@ public class Cube: MonoBehaviour
         meshCollider = GetComponent<MeshCollider>();
 
         meshFilter.mesh = mesh;
-        meshCollider.sharedMesh = mesh;
-
+        
         UpdateMesh();
+
+        meshCollider.sharedMesh = mesh;
     }
 
     void UpdateMesh()

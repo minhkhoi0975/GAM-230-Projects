@@ -4,20 +4,25 @@ using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshCollider))]
 public class Octahedron : MonoBehaviour
 {
     private Mesh mesh;
     private MeshFilter meshFilter;
+    private MeshCollider meshCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         mesh = new Mesh();
         meshFilter = GetComponent<MeshFilter>();
+        meshCollider = GetComponent<MeshCollider>();
 
         meshFilter.mesh = mesh;
 
         UpdateMesh();
+
+        meshCollider.sharedMesh = mesh;
     }
 
     void UpdateMesh()
