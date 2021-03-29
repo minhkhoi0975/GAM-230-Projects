@@ -1,7 +1,14 @@
-﻿using System.Collections;
+﻿/**
+ * Octahedron.cs
+ * Programmer: Khoi Ho
+ * Description: This script generates the mesh of an octahedral dice.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
@@ -10,6 +17,14 @@ public class Octahedron : MonoBehaviour
     private Mesh mesh;
     private MeshFilter meshFilter;
     private MeshCollider meshCollider;
+
+    private Rigidbody rigidBody;
+
+    private List<Vector3> faceNormals = new List<Vector3>();
+    private List<Vector3> faceCenters = new List<Vector3>();
+
+    public int diceValue = 0; // Stores the value of the die.
+    public int DiceValue { get { return diceValue; } }
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +38,8 @@ public class Octahedron : MonoBehaviour
         UpdateMesh();
 
         meshCollider.sharedMesh = mesh;
+
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void UpdateMesh()
@@ -72,9 +89,9 @@ public class Octahedron : MonoBehaviour
 
         for (int i = 0; i < actualVertices.Count / 3; i++)
         {
-            uvs.Add(new Vector2(offsetX, offsetY));
-            uvs.Add(new Vector2(offsetX + 0.1f, offsetY + 0.2f));
-            uvs.Add(new Vector2(offsetX + 0.2f, offsetY));
+            uvs.Add(new Vector2(offsetX, offsetY));                // Bottom left
+            uvs.Add(new Vector2(offsetX + 0.1f, offsetY + 0.2f));  // Middle
+            uvs.Add(new Vector2(offsetX + 0.2f, offsetY));         // Bottom right
 
             // Move to the next number on the right.
             offsetX += 0.2f;
@@ -87,11 +104,58 @@ public class Octahedron : MonoBehaviour
             }
         }
 
+        // Find the center and the normal of each face.
+        for(int i = 0; i < indices.Count/3; i++)
+        {
+            Vector3 a = actualVertices[i * 3];
+            Vector3 b = actualVertices[i * 3 + 1];
+            Vector3 c = actualVertices[i * 3 + 2];
+
+            faceCenters.Add(0.95f * (a + b + c) / 3f);
+
+            Vector3 normal = Vector3.Cross(a - b, a - c).normalized;
+            faceNormals.Add(normal);
+        }
+
         mesh.SetVertices(actualVertices);
         mesh.SetTriangles(indices, 0);
         mesh.SetUVs(0, uvs);
 
         mesh.RecalculateNormals();
         mesh.RecalculateTangents();
+    }
+
+    private void Update()
+    {
+        for (int f = 0; f < faceCenters.Count; ++f)
+        {
+            // Get the normal of the face (since the die rotates, the normal of the face must be recalculated). 
+            Vector3 faceDirection = transform.rotation * faceNormals[f];
+
+            // Check if the normal of the face points downward. If it is, get the value on the opposite face.
+            float alignment = Vector3.Dot(Vector3.down, faceDirection);
+            if (alignment > 0.8f && rigidBody.IsSleeping())
+            {
+                diceValue = 9 - (f + 1);
+            }
+        }
+    }
+
+    // Used for debugging.
+    void OnDrawGizmos()
+    {
+        for (int f = 0; f < faceCenters.Count; ++f)
+        {
+            // Draw a red ray if the normal of the face does not point downward. Otherwise, draw a white ray.
+            if (Physics.Raycast(transform.rotation * faceCenters[f] + transform.position, transform.rotation * faceNormals[f], 0.3f))
+            {
+                Gizmos.color = Color.red;
+            }
+            else
+            {
+                Gizmos.color = Color.white;
+            }
+            Gizmos.DrawRay(transform.rotation * faceCenters[f] + transform.position, transform.rotation * faceNormals[f]);
+        }
     }
 }

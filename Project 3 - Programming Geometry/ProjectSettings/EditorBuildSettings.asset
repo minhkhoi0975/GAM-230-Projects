@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CustomDiceGame.unity
+    guid: f7facaee27ce7e94b85efa001f7128e0
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 898f2be8b37e91c4b935499920d7f492
   m_configObjects: {}

@@ -12,6 +12,12 @@ public class FreeCamera : MonoBehaviour
     public float rotationSpeed = 3.0f;
 
     private bool canBeRotated = false;
+    private Camera camera;
+
+    private void Start()
+    {
+        camera = GetComponent<Camera>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,7 +40,7 @@ public class FreeCamera : MonoBehaviour
             transform.position -= transform.forward * moveSpeed * Time.deltaTime;
         }
 
-        // Hold the left mouse button to rotate the camera.
+        // Hold the right mouse button to rotate the camera.
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             canBeRotated = true;
@@ -44,7 +50,7 @@ public class FreeCamera : MonoBehaviour
             canBeRotated = false;
         }
 
-        // Rotate the camera when the left mouse button is held.
+        // Rotate the camera when the right mouse button is held.
         if (canBeRotated)
         {
             float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * rotationSpeed;

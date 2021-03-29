@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6820542896821056697}
   - component: {fileID: -3235354223326842814}
   - component: {fileID: 1692005674406985125}
+  - component: {fileID: 2630439078658841683}
   m_Layer: 0
   m_Name: Tetrahedron
-  m_TagString: Untagged
+  m_TagString: Die
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,3 +125,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2630439078658841683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820542896821056696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dff96fbb7e655e4caa5ba4b3cac7d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
