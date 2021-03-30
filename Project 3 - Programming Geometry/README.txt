@@ -3,11 +3,16 @@ Programmer: Khoi Ho
 Description: This is a improvised dice game made with Unity. All the meshes of the dice are scripted instead of being made with 3D modelling software.
 Technologies used: Unity 2019.4.21f1, GIMP 2.10.10
 
+Features:
++ Procedurally generated meshes
++ Free camera that allows the players to look at the value of the dice
++ Improvised dice game
+
 How to play:
 	+ Press "Roll the Dice" to roll all 6 dice.
 	+ Optionally, you have up to 3 times to roll one die. Click a die to roll it.
 	+ Press "Pass" to end your turn.
-	+ You can control the camera to look at the values of the dice. Use WASD to move the camera, and hold the right mouse button to rotate it.
+	You can control the camera to look at the values of the dice. Use WASD to move the camera, and hold the right mouse button to rotate it.
 
 Goal:
 	Try to reach 500 points before the other player.
