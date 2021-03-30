@@ -13,7 +13,7 @@ public class ScoreCalculator : MonoBehaviour
     private int score = 0;
     public int Score { get { return score; } }
 
-    PlayersTurn playersTurnRef; // Reference to the player's turn.
+    PlayersTurn playersTurn; // Reference to the player's turn.
 
     [SerializeField] GameObject[] dice; // Refernce to the dice. The first two dices are tetrahedral, the next ones are cubic, and the last ones are octahedral.
     Rigidbody[] rigidBody; // Reference to the dice's rigid body.
@@ -22,7 +22,7 @@ public class ScoreCalculator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playersTurnRef = GameObject.Find("PlayersTurn").GetComponent<PlayersTurn>();
+        playersTurn = GameObject.Find("PlayersTurn").GetComponent<PlayersTurn>();
         
         // Get the RigidBody components of the dice.
         rigidBody = new Rigidbody[dice.Length];
@@ -101,7 +101,7 @@ public class ScoreCalculator : MonoBehaviour
         }
 
         score = sum;
-        if (playersTurnRef.AreAllDiceRolled == true)
+        if (playersTurn.AreAllDiceRolled == true)
         {
             Debug.Log(score + "(T" + tetrahedralDieValue1 + "-T" + tetrahedralDieValue2 + "-C" + cubicDieValue1 + "-C" + cubicDieValue2 + "-O" + octahedralDieValue1 + "-O" + octahedralDieValue2 + ")");
         }
