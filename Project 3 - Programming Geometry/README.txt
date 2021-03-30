@@ -7,19 +7,22 @@ How to play:
 	+ Press "Roll the Dice" to roll all 6 dice.
 	+ Optionally, you have up to 3 times to roll one die. Click a die to roll it.
 	+ Press "Pass" to end your turn.
+	+ You can control the camera to look at the values of the dice. Use WASD to move the camera, and hold the right mouse button to rotate it.
 
 Goal:
-	Try to reach 500 points before the other player does.
-		+ If player 2 reaches 500 points first, then player 2 wins.
-		+ If player 1 reaches 500 points first, then player 2 must get the total score which is greater than that of player 1 in order to win, otherwise player 1 wins.
+	Try to reach 500 points before the other player.
+	+ If player 2 reaches 500 points first, then player 2 wins.
+	+ If player 1 reaches 500 points first, then player 2 must get the total score greater than that of player 1 in order to win, otherwise player 1 wins.
 
 Scoring:
 	In each turn, the score is the sum of all the values of the dice.
+
 	Bonuses:
-		1. If the two tetrahedral dice have the same value, 		their sum is multiplied by 2.
-		2. If the two cubic dice have the same value,			their sum is multiplied by 4.
-		3. IF the two octahedral dice have the same value, 		their sum is multiplied by 6.
-		4. If any 2 of the conditions 1,2, and 3 are met,		50 points is added to the overall sum, or 100 points if all the conditions are met.
+	1. If the two tetrahedral dice have the same value, their sum is multiplied by 2.
+	2. If the two cubic dice have the same value,	    their sum is multiplied by 4.
+	3. IF the two octahedral dice have the same value,  their sum is multiplied by 6.
+	4. If any 2 of the conditions 1,2, and 3 are met,   50 points is added to the overall sum, or 100 points if the remaining condition is also met.
+
 	Examples: 
 		T4-T6-C5-C3-O1-O9 -> (4+6)   + (5+3)   + (1+9)         =  28 points
 		T3-T3-C2-C4-O7-O8 -> (3+3)x2 + (2+4)   + (7+8)         =  33 points
