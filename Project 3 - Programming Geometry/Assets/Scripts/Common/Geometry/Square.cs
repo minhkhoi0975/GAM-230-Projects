@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * Square.cs
+ * Programmer: Khoi Ho
+ * Description: This script generates a surface.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7114878246728876891}
   - component: {fileID: 8380715668510146293}
   - component: {fileID: 3154888836395703411}
-  - component: {fileID: 1362972918987904487}
   m_Layer: 0
   m_Name: Octahedron
   m_TagString: Die
@@ -95,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba990310aa429a8408fe59776d015aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceValue: 0
 --- !u!64 &8380715668510146293
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -125,15 +125,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1362972918987904487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7114878246728876894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dff96fbb7e655e4caa5ba4b3cac7d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

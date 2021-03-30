@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * Square.cs
+ * Programmer: Khoi Ho
+ * Description: This script generates a square pyramid.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +24,6 @@ public class SquarePyramid : MonoBehaviour
         meshFilter.mesh = mesh;
 
         UpdateMesh();
-
     }
 
     void UpdateMesh()

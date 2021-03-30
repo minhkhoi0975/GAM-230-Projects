@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * PlayersTurn.cs
+ * Programmer: Khoi Ho
+ * Description: This script stores information about the current player's turn.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

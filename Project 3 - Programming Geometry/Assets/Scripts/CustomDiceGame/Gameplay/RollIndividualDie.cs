@@ -1,27 +1,34 @@
-﻿using System.Collections;
+﻿/**
+ * RollIndividualDice.cs
+ * Programmer: Khoi Ho
+ * Description: When the player clicks a die, this script rolls it.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RollIndividualDie : MonoBehaviour
 {
     // Reference to the player's turn
-    GameObject playersTurnRef;
+    PlayersTurn playersTurn;
 
     // Start is called before the first frame update
     void Start()
     {
-        playersTurnRef = GameObject.Find("PlayersTurn");
+        playersTurn = GameObject.Find("PlayersTurn").GetComponent<PlayersTurn>();
     }
 
     private void OnMouseDown()
     {
+        // Roll the die.
         Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null && rb.IsSleeping() && playersTurnRef.GetComponent<PlayersTurn>().AreAllDiceRolled == true && playersTurnRef.GetComponent<PlayersTurn>().IndividualDiceRollingRemaining > 0)
+        if (rb != null && rb.IsSleeping() && playersTurn.AreAllDiceRolled == true && playersTurn.IndividualDiceRollingRemaining > 0)
         {
             rb.velocity += new Vector3(0, Random.Range(6f, 12f), 0);
             rb.angularVelocity += new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), Random.Range(-10f, 10f));
 
-            playersTurnRef.GetComponent<PlayersTurn>().IndividualDiceRollingRemaining--;
+            playersTurn.GetComponent<PlayersTurn>().IndividualDiceRollingRemaining--;
         }
     }
 }

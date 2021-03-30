@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * TextWhoWins.cs
+ * Programmer: Khoi Ho
+ * Description: Show who wins the game.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

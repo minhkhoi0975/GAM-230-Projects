@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * ButtonReplay.cs
+ * Programmer: Khoi Ho
+ * Description: Start a new game when the player clicks the "Replay" button.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * ButtonRollAllDice.cs
+ * Programmer: Khoi Ho
+ * Description: Roll all 6 dice when the player clicks the "Roll the Dice" button.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

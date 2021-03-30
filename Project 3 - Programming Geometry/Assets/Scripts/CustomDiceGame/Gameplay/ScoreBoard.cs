@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * ScoreBoard.cs
+ * Programmer: Khoi Ho
+ * Description: This script stores the scores of the players.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

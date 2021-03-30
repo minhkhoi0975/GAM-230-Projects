@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * ScoreCalculator.cs
+ * Programmer: Khoi Ho
+ * Description: This script calculates the score the players gains from the 6 dice.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +13,7 @@ public class ScoreCalculator : MonoBehaviour
     private int score = 0;
     public int Score { get { return score; } }
 
-    GameObject playersTurnRef; // Reference to the player's turn.
+    PlayersTurn playersTurnRef; // Reference to the player's turn.
 
     [SerializeField] GameObject[] dice; // Refernce to the dice. The first two dices are tetrahedral, the next ones are cubic, and the last ones are octahedral.
     Rigidbody[] rigidBody; // Reference to the dice's rigid body.
@@ -16,7 +22,7 @@ public class ScoreCalculator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playersTurnRef = GameObject.Find("PlayersTurn");
+        playersTurnRef = GameObject.Find("PlayersTurn").GetComponent<PlayersTurn>();
         
         // Get the RigidBody components of the dice.
         rigidBody = new Rigidbody[dice.Length];
@@ -95,9 +101,22 @@ public class ScoreCalculator : MonoBehaviour
         }
 
         score = sum;
-        if (playersTurnRef.GetComponent<PlayersTurn>().AreAllDiceRolled == true)
+        if (playersTurnRef.AreAllDiceRolled == true)
         {
             Debug.Log(score + "(T" + tetrahedralDieValue1 + "-T" + tetrahedralDieValue2 + "-C" + cubicDieValue1 + "-C" + cubicDieValue2 + "-O" + octahedralDieValue1 + "-O" + octahedralDieValue2 + ")");
         }
+    }
+
+    // Show the numbers of the dice.
+    public string showDiceInfo()
+    {
+        int tetrahedralDieValue1 = dice[0].GetComponent<Tetrahedron>().diceValue;
+        int tetrahedralDieValue2 = dice[1].GetComponent<Tetrahedron>().diceValue;
+        int cubicDieValue1 = dice[2].GetComponent<Cube>().diceValue;
+        int cubicDieValue2 = dice[3].GetComponent<Cube>().diceValue;
+        int octahedralDieValue1 = dice[4].GetComponent<Octahedron>().diceValue;
+        int octahedralDieValue2 = dice[5].GetComponent<Octahedron>().diceValue;
+
+        return "T" + tetrahedralDieValue1 + "-T" + tetrahedralDieValue2 + "-C" + cubicDieValue1 + "-C" + cubicDieValue2 + "-O" + octahedralDieValue1 + "-O" + octahedralDieValue2;
     }
 }

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * CustomDiceGameHUDUpdate.cs
+ * Programmer: Khoi Ho
+ * Description: Update the HUD of the game.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,6 +46,7 @@ public class CustomDiceGameHUDUpdate : MonoBehaviour
     void Update()
     {
         // Update the score.
-        txtScore.text = "Score: " + GameObject.Find("ScoreCalculator").GetComponent<ScoreCalculator>().Score;
+        ScoreCalculator scoreCalculator = GameObject.Find("ScoreCalculator").GetComponent<ScoreCalculator>();
+        txtScore.text = "Score: " + scoreCalculator.Score + " (" + scoreCalculator.showDiceInfo() + ")";
     }
 }

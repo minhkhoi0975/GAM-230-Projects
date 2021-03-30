@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * RollAllDice.cs
+ * Programmer: Khoi Ho
+ * Description: This script rolls all the referenced dice at the same time.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,27 +28,14 @@ public class RollAllDice : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Disable the button if the dice are still moving.
-        Button button = gameObject.GetComponent<Button>();
-        for (int i = 0; i < dice.Length; i++)
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (!rigidBody[i].IsSleeping())
+            // Roll the dice.
+            for (int i = 0; i < dice.Length; i++)
             {
-                
-                button.interactable = false;
-                return;
+                rigidBody[i].velocity += new Vector3(0, Random.Range(6f, 12f), 0);
+                rigidBody[i].angularVelocity += new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), Random.Range(-10f, 10f));
             }
-        }
-        button.interactable = true;
-    }
-
-    public void Roll()
-    {
-        // Roll the dice.
-        for (int i = 0; i < dice.Length; i++)
-        {
-            rigidBody[i].velocity += new Vector3(0, Random.Range(6f, 12f), 0);
-            rigidBody[i].angularVelocity += new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), Random.Range(-10f, 10f));
         }
     }
 }
