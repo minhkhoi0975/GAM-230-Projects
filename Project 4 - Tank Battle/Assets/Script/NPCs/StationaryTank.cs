@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class StationaryTank : MonoBehaviour
 {
-    // Movement properties
-    public float moveSpeed = 20.0f;
-    public float angularSpeed = 90.0f;
-
-    Rigidbody rigidBody;
-
     // Combat properties
     public int ammoCount = 3;
     public GameObject shell;
@@ -19,35 +13,10 @@ public class PlayerController : MonoBehaviour
 
     bool readyToFire = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        rigidBody = GetComponent<Rigidbody>();
-    }
-
-    private void FixedUpdate()
-    {
-        // Get the input.
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
-
-        // Move the player.
-        Vector3 moveVelocity = vertical * transform.forward * moveSpeed * Time.fixedDeltaTime;
-        rigidBody.AddForce(moveVelocity, ForceMode.Impulse);
-
-        // Rotate the player.
-        float angularVelocity = horizontal * angularSpeed * Time.fixedDeltaTime;
-        rigidBody.rotation = Quaternion.Euler(0f, rigidBody.rotation.eulerAngles.y + angularVelocity, 0f);
-
-        // Shoot.
-        if(Input.GetButton("Fire1") && readyToFire)
+        if (readyToFire)
         {
-            /*
-            // Set the initial position of the bullet.
-            Vector3 bulletPosition = transform.position + 1.6f * transform.forward + new Vector3(0.0f, 1.5f, 0.0f);
-            Instantiate(shell, bulletPosition, transform.rotation, gameObject.transform);
-            */
-
             StartCoroutine(Shoot());
         }
     }
