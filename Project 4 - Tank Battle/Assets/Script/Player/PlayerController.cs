@@ -11,30 +11,11 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rigidBody;
 
-    // Combat properties
-    public int ammoCount = 3;
-    public GameObject shell;
-    public float fireRateInSeconds = 0.5f;
-    public float reloadRateInSeconds = 2.0f;
-
-    bool readyToFire = true;
-
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
     }
-
-    /*
-    private void Update()
-    {
-        // Shoot.
-        if (Input.GetButton("Fire1") && readyToFire)
-        {
-            StartCoroutine(Shoot());
-        }
-    }
-    */
 
     private void FixedUpdate()
     {
@@ -49,36 +30,5 @@ public class PlayerController : MonoBehaviour
         // Rotate the player.
         float angularVelocity = horizontal * angularSpeed * Time.fixedDeltaTime;
         rigidBody.rotation = Quaternion.Euler(0f, rigidBody.rotation.eulerAngles.y + angularVelocity, 0f);    
-    }
-
-    IEnumerator Shoot()
-    {
-        if (ammoCount > 0)
-        {
-            // Set the initial position of the bullet.
-            Vector3 bulletPosition = transform.position + 1.5f * transform.forward + new Vector3(0.0f, 1.5f, 0.0f);
-
-            // Create the bullet.
-            Instantiate(shell, bulletPosition, transform.rotation);
-
-            // Reduce the number of ammo by 1.
-            ammoCount--;
-
-            // Wait before the player can shoot again.
-            readyToFire = false;
-            yield return new WaitForSeconds(fireRateInSeconds);
-
-            // Allow the player to shoot.
-            readyToFire = true;
-        }
-        
-        if(ammoCount <= 0)
-        {
-            readyToFire = false;
-            yield return new WaitForSeconds(reloadRateInSeconds);
-            ammoCount = 3;
-            readyToFire = true;
-            Debug.Log("Ammo Reloaded");
-        }
     }
 }

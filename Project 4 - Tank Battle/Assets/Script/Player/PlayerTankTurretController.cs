@@ -8,32 +8,28 @@ public class PlayerTankTurretController : MonoBehaviour
     public int ammoCount = 3;
     public GameObject shell;
     public float fireRateInSeconds = 0.5f;
-    public float reloadRateInSeconds = 2.0f;
+    public float reloadRateInSeconds = 1.0f;
 
     bool readyToFire = true;
 
     // Update is called once per frame
     void Update()
     {
-        // Get the position of the mouse.
+        // Get the position of the mouse on screen space.
         Vector3 mousePosition = Input.mousePosition;
-        Vector3 objectPosition = Camera.main.WorldToScreenPoint(transform.position);
+
+        // Get the position of the turret on screen space.
+        Vector3 turretPosition = Camera.main.WorldToScreenPoint(transform.position);
 
         // Rotate the turret to the position of the mouse.
-        mousePosition.x = mousePosition.x - objectPosition.x;
-        mousePosition.y = mousePosition.y - objectPosition.y;
+        mousePosition.x = mousePosition.x - turretPosition.x;
+        mousePosition.y = mousePosition.y - turretPosition.y;
         float angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0.0f, angle, 0.0f));
 
         // Shoot.
         if (Input.GetButton("Fire1") && readyToFire)
         {
-            /*
-            // Set the initial position of the bullet.
-            Vector3 bulletPosition = transform.position + 1.6f * transform.forward + new Vector3(0.0f, 1.5f, 0.0f);
-            Instantiate(shell, bulletPosition, transform.rotation, gameObject.transform);
-            */
-
             StartCoroutine(Shoot());
         }
     }
@@ -59,6 +55,7 @@ public class PlayerTankTurretController : MonoBehaviour
             readyToFire = true;
         }
 
+        // Out of ammo? Reload.
         if (ammoCount <= 0)
         {
             readyToFire = false;

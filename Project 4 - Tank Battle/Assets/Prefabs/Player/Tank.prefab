@@ -191,7 +191,7 @@ MonoBehaviour:
   ammoCount: 3
   shell: {fileID: 7380184748967298072, guid: 4f65b167f6d3ca444a5d9a32766b694f, type: 3}
   fireRateInSeconds: 0.5
-  reloadRateInSeconds: 2
+  reloadRateInSeconds: 1
 --- !u!1001 &5414817490658796687
 PrefabInstance:
   m_ObjectHideFlags: 0
