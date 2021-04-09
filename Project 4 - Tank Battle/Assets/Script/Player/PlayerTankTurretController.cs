@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerTankTurretController : MonoBehaviour
 {
-    // Movement properties
-    public float moveSpeed = 20.0f;
-    public float angularSpeed = 90.0f;
-
-    Rigidbody rigidBody;
-
     // Combat properties
     public int ammoCount = 3;
     public GameObject shell;
@@ -19,36 +12,30 @@ public class PlayerController : MonoBehaviour
 
     bool readyToFire = true;
 
-    // Start is called before the first frame update
-    void Start()
+    // Update is called once per frame
+    void Update()
     {
-        rigidBody = GetComponent<Rigidbody>();
-    }
+        // Get the position of the mouse.
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 objectPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-    /*
-    private void Update()
-    {
+        // Rotate the turret to the position of the mouse.
+        mousePosition.x = mousePosition.x - objectPosition.x;
+        mousePosition.y = mousePosition.y - objectPosition.y;
+        float angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0.0f, angle, 0.0f));
+
         // Shoot.
         if (Input.GetButton("Fire1") && readyToFire)
         {
+            /*
+            // Set the initial position of the bullet.
+            Vector3 bulletPosition = transform.position + 1.6f * transform.forward + new Vector3(0.0f, 1.5f, 0.0f);
+            Instantiate(shell, bulletPosition, transform.rotation, gameObject.transform);
+            */
+
             StartCoroutine(Shoot());
         }
-    }
-    */
-
-    private void FixedUpdate()
-    {
-        // Get the movement input.
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
-
-        // Move the player.
-        Vector3 moveVelocity = vertical * transform.forward * moveSpeed * Time.fixedDeltaTime;
-        rigidBody.AddForce(moveVelocity, ForceMode.Impulse);
-
-        // Rotate the player.
-        float angularVelocity = horizontal * angularSpeed * Time.fixedDeltaTime;
-        rigidBody.rotation = Quaternion.Euler(0f, rigidBody.rotation.eulerAngles.y + angularVelocity, 0f);    
     }
 
     IEnumerator Shoot()
@@ -56,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (ammoCount > 0)
         {
             // Set the initial position of the bullet.
-            Vector3 bulletPosition = transform.position + 1.5f * transform.forward + new Vector3(0.0f, 1.5f, 0.0f);
+            Vector3 bulletPosition = transform.position + 1.2f * transform.forward;
 
             // Create the bullet.
             Instantiate(shell, bulletPosition, transform.rotation);
@@ -71,8 +58,8 @@ public class PlayerController : MonoBehaviour
             // Allow the player to shoot.
             readyToFire = true;
         }
-        
-        if(ammoCount <= 0)
+
+        if (ammoCount <= 0)
         {
             readyToFire = false;
             yield return new WaitForSeconds(reloadRateInSeconds);
