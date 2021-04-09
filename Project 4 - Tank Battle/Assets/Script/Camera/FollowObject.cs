@@ -19,8 +19,5 @@ public class FollowObject : MonoBehaviour
     {
         // Always keep the same distance to the target.
         gameObject.transform.position = target.transform.position - offset;
-
-        // Always look at the target.
-        gameObject.transform.LookAt(target.transform);
     }
 }
