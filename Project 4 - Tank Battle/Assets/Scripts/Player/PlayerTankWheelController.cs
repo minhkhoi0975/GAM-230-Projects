@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerTankWheelController : MonoBehaviour
 {
     // Movement properties
     public float moveSpeed = 20.0f;

@@ -56,6 +56,9 @@ public class Goal : MonoBehaviour
         // Wait.
         yield return new WaitForSeconds(timeBeforeNextScene);
 
+        // Update the total score.
+        GameManager.Instance.UpdateTotalScore();
+
         // Load the next scene.
         SceneManager.LoadScene(nextScene);
     }

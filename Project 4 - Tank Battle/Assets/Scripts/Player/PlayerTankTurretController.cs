@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerTankTurretController : MonoBehaviour
 {
     // Combat properties
-    public int ammoCount = 3;
-    public GameObject shell;
+    public GameObject shellTemplate;
     public float fireRateInSeconds = 0.5f;
-    public float reloadRateInSeconds = 1.0f;
+    public float reloadTimeInSeconds = 1.0f;
 
     bool readyToFire = true;
 
@@ -36,16 +35,17 @@ public class PlayerTankTurretController : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (ammoCount > 0)
+        if (GameManager.Instance.ammo > 0)
         {
             // Set the initial position of the bullet.
             Vector3 bulletPosition = transform.position + 1.2f * transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
 
-            // Create the bullet.
-            Instantiate(shell, bulletPosition, transform.rotation);
+            // Create the shell.
+            GameObject shell = Instantiate(shellTemplate, bulletPosition, transform.rotation);
+            shell.GetComponent<Shell>().isShotByPlayer = true;
 
             // Reduce the number of ammo by 1.
-            ammoCount--;
+            GameManager.Instance.ammo--;
 
             // Wait before the player can shoot again.
             readyToFire = false;
@@ -56,13 +56,12 @@ public class PlayerTankTurretController : MonoBehaviour
         }
 
         // Out of ammo? Reload.
-        if (ammoCount <= 0)
+        if (GameManager.Instance.ammo <= 0)
         {
             readyToFire = false;
-            yield return new WaitForSeconds(reloadRateInSeconds);
-            ammoCount = 3;
+            yield return new WaitForSeconds(reloadTimeInSeconds);
+            GameManager.Instance.ammo = 3;
             readyToFire = true;
-            Debug.Log("Ammo Reloaded");
         }
     }
 }

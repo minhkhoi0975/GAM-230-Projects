@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ae8a53f4ea72546acf72a004e784ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 5180302856829737438}
+  player: {fileID: 5180302856829737438}
 --- !u!54 &7197887100696208432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,10 +140,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   angularSpeed: 90
-  ammoCount: 3
-  shell: {fileID: 7380184748967298072, guid: 4f65b167f6d3ca444a5d9a32766b694f, type: 3}
-  fireRateInSeconds: 0.2
-  reloadRateInSeconds: 1
+--- !u!114 &8534213076158093965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180302856829737438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7f204831fc5f34da2d8d161d9b9e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debrisPrefab: {fileID: 7116729151850574281, guid: 97762aa127c00ef46909fe7c626a171b,
+    type: 3}
+  explosionPrefab: {fileID: 5861431857214148568, guid: 2b381518c31945041a24dfb0c170609b,
+    type: 3}
 --- !u!1 &7841154931487485877
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,10 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db770cf4d8ff0e44d9ca0ac17a9aebd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: 3
-  shell: {fileID: 7380184748967298072, guid: 4f65b167f6d3ca444a5d9a32766b694f, type: 3}
+  shellTemplate: {fileID: 7380184748967298072, guid: 4f65b167f6d3ca444a5d9a32766b694f,
+    type: 3}
   fireRateInSeconds: 0.5
-  reloadRateInSeconds: 1
+  reloadTimeInSeconds: 1
 --- !u!1001 &5414817490658796687
 PrefabInstance:
   m_ObjectHideFlags: 0

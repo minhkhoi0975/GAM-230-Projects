@@ -29,6 +29,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.8, z: 2.22}
   m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &7108563996123601182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180302856829737438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aa05a5e1f4598458e049d8d1b6e8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 500
+  debrisPrefab: {fileID: 7116729151850574281, guid: 97762aa127c00ef46909fe7c626a171b,
+    type: 3}
+  explosionPrefab: {fileID: 5861431857214148568, guid: 2b381518c31945041a24dfb0c170609b,
+    type: 3}
 --- !u!1 &7841154931487485877
 GameObject:
   m_ObjectHideFlags: 0
