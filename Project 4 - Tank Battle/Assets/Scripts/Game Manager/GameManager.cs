@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            _instance.ammo = 3;
+            _instance.currentLevelScore = 0;
             Destroy(gameObject);
         }
     }
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
         _instance.totalScore = 0;
         _instance.lives = 3;
         _instance.ammo = 3;
+        _instance.currentLevelScore = 0;
     }
 
     public void UpdateTotalScore()
