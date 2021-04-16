@@ -50,8 +50,6 @@ public class PlayerTankTurretController : MonoBehaviour
             // Wait before the player can shoot again.
             readyToFire = false;
             yield return new WaitForSeconds(fireRateInSeconds);
-
-            // Allow the player to shoot.
             readyToFire = true;
         }
 

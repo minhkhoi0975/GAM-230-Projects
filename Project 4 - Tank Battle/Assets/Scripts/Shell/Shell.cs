@@ -28,13 +28,12 @@ public class Shell : MonoBehaviour
         if (!other.CompareTag("Shell"))
         {
             // If the object is the player's tank, destroy it (don't destroy its parent).
-            if(other.CompareTag("Player"))
+            if(other.CompareTag("Player") && !isShotByPlayer)
             {
                 // Create explosion.
                 GameObject explosion = Instantiate(other.gameObject.GetComponent<PlayerTankOnDestroy>().explosionPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
                 Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
                 
-
                 // Create debris.
                 GameObject debris = Instantiate(other.gameObject.GetComponent<PlayerTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
                 Destroy(debris, 5.0f);
@@ -46,21 +45,26 @@ public class Shell : MonoBehaviour
             // If the object is an enemy tank, update the score of the current round and destroy the enemy tank.
             if (other.CompareTag("Character") && isShotByPlayer)
             {
-                // Increase the score in the current level.
-                GameManager.Instance.currentLevelScore += other.gameObject.GetComponent<EnemyTankOnDestroy>().score;
+                other.gameObject.GetComponent<EnemyTankOnDestroy>().health--;
+                if (other.gameObject.GetComponent<EnemyTankOnDestroy>().health == 0)
+                {
+                    // Increase the score in the current level.
+                    GameManager.Instance.currentLevelScore += other.gameObject.GetComponent<EnemyTankOnDestroy>().score;
 
-                // Create explosion.
-                GameObject explosion = Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().explosionPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
-                Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
+                    // Create explosion.
+                    GameObject explosion = Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().explosionPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
+                    Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
 
-                // Create debris.
-                GameObject debris = Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
-                Destroy(debris, 5.0f);
+                    // Create debris.
+                    GameObject debris = Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
+                    Destroy(debris, 5.0f);
 
-                // Destroy enemy tank.
-                Destroy(other.transform.parent.gameObject);
+                    // Destroy enemy tank.
+                    Destroy(other.transform.parent.gameObject);
+                }
             }
 
+            // Destroy the shell.
             Destroy(gameObject);
         }
     }

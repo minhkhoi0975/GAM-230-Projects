@@ -3339,7 +3339,7 @@ PrefabInstance:
     - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
         type: 3}
       propertyPath: m_Name
-      value: StaionaryTank (6)
+      value: MovingEnemyTank (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -3684,7 +3684,7 @@ PrefabInstance:
     - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
         type: 3}
       propertyPath: m_Name
-      value: StaionaryTank (5)
+      value: MovingEnemyTank (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -4748,7 +4748,7 @@ PrefabInstance:
     - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
         type: 3}
       propertyPath: m_Name
-      value: StaionaryTank
+      value: MovingEnemyTank
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -5850,7 +5850,7 @@ PrefabInstance:
     - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
         type: 3}
       propertyPath: m_Name
-      value: StaionaryTank (8)
+      value: MovingEnemyTank (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -6003,7 +6003,7 @@ PrefabInstance:
     - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
         type: 3}
       propertyPath: m_Name
-      value: StaionaryTank (9)
+      value: MovingEnemyTank (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -6077,7 +6077,7 @@ PrefabInstance:
     - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
         type: 3}
       propertyPath: m_Name
-      value: StaionaryTank (4)
+      value: MovingEnemyTank (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -6192,7 +6192,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29764
+  m_Name: pb_Mesh62754
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

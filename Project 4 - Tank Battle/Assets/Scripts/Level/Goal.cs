@@ -10,7 +10,9 @@ public class Goal : MonoBehaviour
     public string nextScene;
     public float timeBeforeNextScene = 5.0f;
 
+    /*
     public List<GameObject> requiredCollectibles;  // These items that must be collected before the goal can be enabled.
+    */
 
     private void Start()
     {
@@ -21,6 +23,7 @@ public class Goal : MonoBehaviour
 
     void Update()
     {
+        /*
         // Remove collected items.
         int i = 0;
         while(i < requiredCollectibles.Count)
@@ -37,6 +40,14 @@ public class Goal : MonoBehaviour
 
         // Enable the goal when all the items are collected.
         if (requiredCollectibles.Count == 0)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
+        */
+
+        // Enable the goal if all the collectibles are collected and all the enemies are destroyed.
+        if(Collectible.collectibleCount == 0 && EnemyTankOnDestroy.tankCount == 0)
         {
             gameObject.GetComponent<MeshRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider>().enabled = true;

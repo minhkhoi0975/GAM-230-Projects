@@ -9,13 +9,12 @@ public class PlayerTankOnDestroy : MonoBehaviour
 
     private void OnDestroy()
     {
-        /*
         // Create explosion.
-        GameObject explosion = Instantiate(gameObject.GetComponent<PlayerTankOnDestroy>().debrisPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
+        //GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+        //Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
 
         // Create debris.
-        Instantiate(gameObject.GetComponent<PlayerTankOnDestroy>().debrisPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        */
+        //GameObject debris = Instantiate(debrisPrefab, transform.position, transform.rotation);
+        //Destroy(debris, 5.0f);
     }
 }

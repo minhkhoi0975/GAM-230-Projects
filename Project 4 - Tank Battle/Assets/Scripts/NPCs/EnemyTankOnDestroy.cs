@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class EnemyTankOnDestroy : MonoBehaviour
 {
+    static public int tankCount = 0;
+
+    public int health = 1;
     public int score = 500;
 
     public GameObject debrisPrefab;
     public GameObject explosionPrefab;
 
+    private void Awake()
+    {
+        tankCount++;
+    }
+
     private void OnDestroy()
     {
-        /*
-        // Create explosion.
-        GameObject explosion = Instantiate(gameObject.GetComponent<EnemyTankOnDestroy>().debrisPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
-
-        // Create debris.
-        Instantiate(gameObject.GetComponent<EnemyTankOnDestroy>().debrisPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        */
+        tankCount--;
     }
 }
