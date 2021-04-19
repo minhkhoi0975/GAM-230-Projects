@@ -20,8 +20,8 @@ public class PlayerTankWheelController : MonoBehaviour
     private void FixedUpdate()
     {
         // Get the movement input.
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("LeftStickVertical");
+        float horizontal = Input.GetAxis("LeftStickHorizontal");
 
         // Move the player.
         Vector3 moveVelocity = vertical * transform.forward * moveSpeed * Time.fixedDeltaTime;

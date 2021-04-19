@@ -11,13 +11,16 @@ public class BurstFireEnemyTankTurret : MonoBehaviour
     public float reloadRateInSeconds = 3.0f;
     public float shellSprayAngle = 30.0f;
 
+    int currentAmmoCount;
     bool readyToFire = true;
 
     GameObject player;  // Reference to the player.
 
     private void Start()
     {
+        currentAmmoCount = ammoCount;
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     private void Update()
@@ -42,7 +45,7 @@ public class BurstFireEnemyTankTurret : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (ammoCount > 0)
+        if (currentAmmoCount > 0)
         {
             // Set the initial position of the 3 shells.
             Vector3 bulletPosition = transform.position + 1.2f * transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
@@ -56,7 +59,7 @@ public class BurstFireEnemyTankTurret : MonoBehaviour
             Instantiate(shell, bulletPosition, shell3Rotation);
 
             // Reduce the number of ammo by 1.
-            ammoCount--;
+            currentAmmoCount--;
 
             // Wait before the player can shoot again.
             readyToFire = false;
@@ -67,14 +70,14 @@ public class BurstFireEnemyTankTurret : MonoBehaviour
         }
 
         // Out of ammo? Reload.
-        if (ammoCount <= 0)
+        if (currentAmmoCount <= 0)
         {
             // Wait before the player can shoot again.
             readyToFire = false;
             yield return new WaitForSeconds(reloadRateInSeconds);
 
             // Reload.
-            ammoCount = 3;
+            currentAmmoCount = ammoCount;
 
             // Allow the enemy tank to shoot.
             readyToFire = true;

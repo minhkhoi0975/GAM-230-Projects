@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerTankTurretController : MonoBehaviour
 {
+    // Rotation property
+    public float angularSpeed = 240.0f;
+
     // Combat properties
     public GameObject shellTemplate;
     public float fireRateInSeconds = 0.5f;
@@ -25,6 +28,14 @@ public class PlayerTankTurretController : MonoBehaviour
         mousePosition.y = mousePosition.y - turretPosition.y;
         float angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0.0f, angle, 0.0f));
+        
+
+        /*
+        // Rotate the turret.
+        float horizontal = Input.GetAxis("RightStickHorizontal");
+        float angularVelocity = horizontal * angularSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y + angularVelocity, 0f);
+        */
 
         // Shoot.
         if (Input.GetButton("Fire1") && readyToFire)
@@ -35,7 +46,7 @@ public class PlayerTankTurretController : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (GameManager.Instance.ammo > 0)
+        if (GameManager.Instance.currentAmmo > 0)
         {
             // Set the initial position of the bullet.
             Vector3 bulletPosition = transform.position + 1.2f * transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
@@ -45,7 +56,7 @@ public class PlayerTankTurretController : MonoBehaviour
             shell.GetComponent<Shell>().isShotByPlayer = true;
 
             // Reduce the number of ammo by 1.
-            GameManager.Instance.ammo--;
+            GameManager.Instance.currentAmmo--;
 
             // Wait before the player can shoot again.
             readyToFire = false;
@@ -54,11 +65,11 @@ public class PlayerTankTurretController : MonoBehaviour
         }
 
         // Out of ammo? Reload.
-        if (GameManager.Instance.ammo <= 0)
+        if (GameManager.Instance.currentAmmo <= 0)
         {
             readyToFire = false;
             yield return new WaitForSeconds(reloadTimeInSeconds);
-            GameManager.Instance.ammo = 3;
+            GameManager.Instance.currentAmmo = GameManager.Instance.ammo;
             readyToFire = true;
         }
     }

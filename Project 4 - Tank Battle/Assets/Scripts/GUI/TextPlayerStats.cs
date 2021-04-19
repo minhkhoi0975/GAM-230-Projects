@@ -20,6 +20,6 @@ public class TextPlayerStats : MonoBehaviour
         text.text =
         "Lives: " + GameManager.Instance.lives + "\n" +
         "Score: " + (GameManager.Instance.totalScore + GameManager.Instance.currentLevelScore) + "\n" +
-        "Ammo: " + GameManager.Instance.ammo;
+        "Ammo: " + GameManager.Instance.currentAmmo + "/" + GameManager.Instance.ammo;
     }
 }

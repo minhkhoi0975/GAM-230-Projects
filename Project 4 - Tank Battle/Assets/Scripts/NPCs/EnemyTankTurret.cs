@@ -9,31 +9,28 @@ public class EnemyTankTurret : MonoBehaviour
     public GameObject shell;
     public float fireRateInSeconds = 1.0f;
     public float reloadRateInSeconds = 3.0f;
-    // public float visionRadius = 20.0f;
 
+    int currentAmmoCount;
     bool readyToFire = true;
 
     GameObject player;  // Reference to the player.
 
     private void Start()
     {
+        currentAmmoCount = ammoCount;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        if 
-            (
-            player != null 
-            // && Vector3.Distance(player.transform.position, transform.position) <= 20.0f
-            )
+        if(player!=null)
         {
             // Rotate the turret toward the player.
-            Vector3 lookDirectionVector = player.transform.position - transform.position;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirectionVector.normalized), 0.1f);
+            Vector3 lookDirectionVector = (player.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 0.1f);
 
             // Shoot
-            if (readyToFire)
+            if (canSeePlayer() && readyToFire)
             {
                 StartCoroutine(Shoot());
             }
@@ -42,7 +39,7 @@ public class EnemyTankTurret : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (ammoCount > 0)
+        if (currentAmmoCount > 0)
         {
             // Set the initial position of the bullet.
             Vector3 bulletPosition = transform.position + 1.2f * transform.forward + new Vector3(0.0f, 0.5f, 0.0f);
@@ -51,9 +48,9 @@ public class EnemyTankTurret : MonoBehaviour
             Instantiate(shell, bulletPosition, transform.rotation);
 
             // Reduce the number of ammo by 1.
-            ammoCount--;
+            currentAmmoCount--;
 
-            // Wait before the player can shoot again.
+            // Wait before the enemy can shoot again.
             readyToFire = false;
             yield return new WaitForSeconds(fireRateInSeconds);
 
@@ -62,17 +59,34 @@ public class EnemyTankTurret : MonoBehaviour
         }
 
         // Out of ammo? Reload.
-        if (ammoCount <= 0)
+        if (currentAmmoCount <= 0)
         {
-            // Wait before the player can shoot again.
+            // Wait before the enemy can shoot again.
             readyToFire = false;
             yield return new WaitForSeconds(reloadRateInSeconds);
 
             // Reload.
-            ammoCount = 3;
+            currentAmmoCount = ammoCount;
 
             // Allow the enemy tank to shoot.
             readyToFire = true;
+        }
+    }
+
+    bool canSeePlayer()
+    {
+        RaycastHit raycastHit;
+        if
+        (
+            Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out raycastHit, Mathf.Infinity)
+            && raycastHit.collider.tag == "Player"
+        )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
