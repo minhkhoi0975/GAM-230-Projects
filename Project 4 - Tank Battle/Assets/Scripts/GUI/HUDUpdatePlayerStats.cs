@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿/**
+ * HUDUpdatePlayerStats.cs
+ * Programmer: Khoi Ho
+ * Description: This script updates the player stats on HUD.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class TextPlayerStats : MonoBehaviour
+public class HUDUpdatePlayerStats : MonoBehaviour
 {
     Text text;
 

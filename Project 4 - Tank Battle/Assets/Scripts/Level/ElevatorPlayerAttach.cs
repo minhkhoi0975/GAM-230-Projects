@@ -6,21 +6,19 @@ public class ElevatorPlayerAttach : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        // If the player enters the elevator, attach the player to the elevator.
         if (other.CompareTag("Player"))
         {
-            // other.GetComponent<Rigidbody>().useGravity = false;
             other.transform.parent = transform;
-            Debug.Log("Player enters the moving platform.");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        // If the player leaves the elevator, detach the player from the elevator.
         if (other.CompareTag("Player"))
         {
-            // other.GetComponent<Rigidbody>().useGravity = true;
             other.transform.parent = null;
-            Debug.Log("Player leaves the moving platform.");
         }
     }
 }

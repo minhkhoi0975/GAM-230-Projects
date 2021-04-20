@@ -25,11 +25,7 @@ public class BurstFireEnemyTankTurret : MonoBehaviour
 
     private void Update()
     {
-        if
-            (
-            player != null
-            // && Vector3.Distance(player.transform.position, transform.position) <= 20.0f
-            )
+        if(player != null)
         {
             // Rotate the turret toward the player.
             Vector3 lookDirectionVector = player.transform.position - transform.position;

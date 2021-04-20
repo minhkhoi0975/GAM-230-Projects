@@ -12,33 +12,73 @@ public class PlayerTankTurretController : MonoBehaviour
     public float fireRateInSeconds = 0.5f;
     public float reloadTimeInSeconds = 1.0f;
 
+    bool isControlledWithMouse = true; // true = Mouse, false = Arrow Keys/Right Trigger
     bool readyToFire = true;
 
     // Update is called once per frame
     void Update()
     {
-        // Get the position of the mouse on screen space.
-        Vector3 mousePosition = Input.mousePosition;
+        // Get the for the turret.
+        float mouseInputX = Input.GetAxisRaw("Mouse X");
+        float mouseInputY = Input.GetAxisRaw("Mouse Y");
+        float arrowKeyInput = Input.GetAxis("RightStickHorizontal");
 
-        // Get the position of the turret on screen space.
-        Vector3 turretPosition = Camera.main.WorldToScreenPoint(transform.position);
-
-        // Rotate the turret to the position of the mouse.
-        mousePosition.x = mousePosition.x - turretPosition.x;
-        mousePosition.y = mousePosition.y - turretPosition.y;
-        float angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0.0f, angle, 0.0f));
+        // Check the kind of input.
+        if(mouseInputX != 0 || mouseInputY != 0)
+        {
+            Debug.Log("Mouse has moved!");
+            isControlledWithMouse = true;
+        }
+        else if(arrowKeyInput != 0)
+        {
+            isControlledWithMouse = false;
+        }     
         
+        // Rotate the turret using mouse.
+        if (isControlledWithMouse)
+        {
+            // Get the position of the mouse on screen space.
+            Vector3 mousePosition = Input.mousePosition;
 
-        /*
-        // Rotate the turret.
-        float horizontal = Input.GetAxis("RightStickHorizontal");
-        float angularVelocity = horizontal * angularSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y + angularVelocity, 0f);
-        */
+            // Get the position of the turret on screen space.
+            Vector3 turretPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-        // Shoot.
-        if (Input.GetButton("Fire1") && readyToFire)
+            // Find the new angle.
+            mousePosition.x = mousePosition.x - turretPosition.x;
+            mousePosition.y = mousePosition.y - turretPosition.y;
+            float newAngle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
+
+            // Rotate the turret.
+            Quaternion newRotation = Quaternion.Euler(0f, newAngle, 0f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime);
+        }
+        // Rotate the turret using arrow keys/right stick.
+        else
+        {
+            // Fix the Xbox One controller issue.
+            if(arrowKeyInput < 0)
+            {
+                arrowKeyInput = -1;
+            }
+            else if(arrowKeyInput > 0)
+            {
+                arrowKeyInput = 1;
+            }
+            else
+            {
+                arrowKeyInput = 0;
+            }
+
+            // Find the new angle.
+            float newAngle = transform.rotation.eulerAngles.y - arrowKeyInput * angularSpeed;
+
+            // Rotate the turret.
+            Quaternion newRotation = Quaternion.Euler(0f, newAngle, 0f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime);
+        }
+
+        // Fire a shell using LMB/Space/Right trigger.
+        if (Input.GetAxis("Fire1") != 0 && readyToFire)
         {
             StartCoroutine(Shoot());
         }

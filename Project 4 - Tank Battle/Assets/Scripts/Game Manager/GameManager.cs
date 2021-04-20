@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public int currentLevelScore = 0;
 
+    [HideInInspector] public int currentLives;
     [HideInInspector] public int currentAmmo;
 
     private void Awake()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         // If the instance of this class has not been created, create a new one. Otherwise, do not create another one.
         if (_instance == null)
         {
+            this.currentLives = lives;
             this.currentAmmo = ammo;
             _instance = this;
 
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            _instance.currentLives = _instance.lives;
             _instance.currentAmmo = _instance.ammo;
             _instance.currentLevelScore = 0;
             Destroy(gameObject);
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
     public void ResetPlayerStats()
     {
         _instance.totalScore = 0;
-        _instance.lives = 3;
+        _instance.currentLives = _instance.lives;
         _instance.currentAmmo = _instance.ammo;
         _instance.currentLevelScore = 0;
     }

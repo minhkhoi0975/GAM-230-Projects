@@ -1,9 +1,15 @@
-﻿using System.Collections;
+﻿/**
+ * ButtonOnClick.cs
+ * Programmer: Khoi Ho
+ * Description: This script handles mouse clicks on buttons.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GUIScript : MonoBehaviour
+public class ButtonOnClick : MonoBehaviour
 {
     public void StartGame(string sceneName)
     {
