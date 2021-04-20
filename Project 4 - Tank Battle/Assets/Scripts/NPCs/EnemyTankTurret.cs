@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * EnemyTankTurret.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script handles the turrets of the enemy tanks. For the burst fire tanks, see BurstFireEnemyTankTurret.cs
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +15,7 @@ public class EnemyTankTurret : MonoBehaviour
     public GameObject shell;
     public float fireRateInSeconds = 1.0f;
     public float reloadRateInSeconds = 3.0f;
+    public AudioClip shootingSound;
 
     int currentAmmoCount;
     bool readyToFire = true;
@@ -46,6 +53,9 @@ public class EnemyTankTurret : MonoBehaviour
 
             // Create the bullet.
             Instantiate(shell, bulletPosition, transform.rotation);
+
+            // Create sound effect.
+            AudioSource.PlayClipAtPoint(shootingSound, bulletPosition);
 
             // Reduce the number of ammo by 1.
             currentAmmoCount--;

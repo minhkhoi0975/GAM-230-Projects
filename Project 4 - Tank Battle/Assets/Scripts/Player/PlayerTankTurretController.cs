@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/**
+ * PlayerTankTurretController.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script handles the control of the player tank's turret.
+ *              There are 3 ways to rotate the turret: left/right arrows, mouse movement, and right trigger on Xbox One controller.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +18,9 @@ public class PlayerTankTurretController : MonoBehaviour
     public GameObject shellTemplate;
     public float fireRateInSeconds = 0.5f;
     public float reloadTimeInSeconds = 1.0f;
+    public AudioClip shootingSound;
 
-    bool isControlledWithMouse = true; // true = Mouse, false = Arrow Keys/Right Trigger
+    bool isControlledWithMouse = false; // true = Mouse, false = Arrow Keys/Right Trigger
     bool readyToFire = true;
 
     // Update is called once per frame
@@ -68,7 +76,7 @@ public class PlayerTankTurretController : MonoBehaviour
             {
                 arrowKeyInput = 0;
             }
-
+            
             // Find the new angle.
             float newAngle = transform.rotation.eulerAngles.y - arrowKeyInput * angularSpeed;
 
@@ -94,6 +102,9 @@ public class PlayerTankTurretController : MonoBehaviour
             // Create the shell.
             GameObject shell = Instantiate(shellTemplate, bulletPosition, transform.rotation);
             shell.GetComponent<Shell>().isShotByPlayer = true;
+
+            // Create sound effect.
+            AudioSource.PlayClipAtPoint(shootingSound, bulletPosition);
 
             // Reduce the number of ammo by 1.
             GameManager.Instance.currentAmmo--;

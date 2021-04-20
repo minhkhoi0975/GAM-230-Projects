@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * DestroyIfHasNoChildren.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script destroys a game object if it has no children.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 ﻿/**
- * HUDUpdatePlayerStats.cs
+ * Elevator.cs
  * Programmer: Khoi Ho (credits to professor Dearbon)
- * Description: This script updates the player stats on HUD.
+ * Description: This script handles the movement of elevators.
  */
 
 using System.Collections;

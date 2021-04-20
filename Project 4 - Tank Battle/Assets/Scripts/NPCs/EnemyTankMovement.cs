@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * EnemyTankMovement.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script handles the movement of the enemy tanks.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,7 +13,7 @@ using UnityEngine.AI;
 public class EnemyTankMovement : MonoBehaviour
 {
     GameObject player;          // Reference to the player.
-    NavMeshAgent navMeshAgent;
+    NavMeshAgent navMeshAgent;  // Reference to navmesh agent.
 
     // Start is called before the first frame update
     void Start()

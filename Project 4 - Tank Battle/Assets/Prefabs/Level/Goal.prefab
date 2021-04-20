@@ -108,3 +108,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: SampleScene
   timeBeforeNextScene: 5
+  goalSound: {fileID: 8300000, guid: 1695784d0f3069447bd7a5f40ae92834, type: 3}

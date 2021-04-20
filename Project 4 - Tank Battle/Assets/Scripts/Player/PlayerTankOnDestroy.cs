@@ -1,20 +1,17 @@
-﻿using System.Collections;
+﻿/**
+ * PlayerTankOnDestroy.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script stores what debris model and explosion effect will be created when the player tank is destroyed.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTankOnDestroy : MonoBehaviour
 {
     public GameObject debrisPrefab;
     public GameObject explosionPrefab;
-
-    private void OnDestroy()
-    {
-        // Create explosion.
-        //GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
-        //Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
-
-        // Create debris.
-        //GameObject debris = Instantiate(debrisPrefab, transform.position, transform.rotation);
-        //Destroy(debris, 5.0f);
-    }
+    public AudioClip hitSound;
 }

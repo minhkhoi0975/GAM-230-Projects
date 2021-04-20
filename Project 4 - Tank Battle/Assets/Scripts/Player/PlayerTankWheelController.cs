@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * PlayerTankWheelController.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script handles the movement of the whole player tank.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

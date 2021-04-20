@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * Goal.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script checks the conditions of a goal and makes the goal appear when all the conditions are met.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,10 +15,13 @@ public class Goal : MonoBehaviour
 {
     public string nextScene;
     public float timeBeforeNextScene = 5.0f;
+    public AudioClip goalSound;
 
     /*
     public List<GameObject> requiredCollectibles;  // These items that must be collected before the goal can be enabled.
     */
+
+    bool allRequirementsMet = false;
 
     private void Start()
     {
@@ -49,8 +58,17 @@ public class Goal : MonoBehaviour
         // Enable the goal if all the collectibles are collected and all the enemies are destroyed.
         if(Collectible.collectibleCount == 0 && EnemyTankOnDestroy.tankCount == 0)
         {
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
-            gameObject.GetComponent<BoxCollider>().enabled = true;
+            if (!allRequirementsMet)
+            {
+                allRequirementsMet = true;
+
+                // Make the goal appear.
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                gameObject.GetComponent<BoxCollider>().enabled = true;
+
+                // Play the goal sound.
+                AudioSource.PlayClipAtPoint(goalSound, transform.position + new Vector3(0.0f, 10.0f, 0.0f));
+            }
         }
     }
 
@@ -58,11 +76,11 @@ public class Goal : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            StartCoroutine(WaitBeforeNextScene());
+            StartCoroutine(LoadNextLevel());
         }
     }
 
-    IEnumerator WaitBeforeNextScene()
+    IEnumerator LoadNextLevel()
     {
         // Wait.
         yield return new WaitForSeconds(timeBeforeNextScene);

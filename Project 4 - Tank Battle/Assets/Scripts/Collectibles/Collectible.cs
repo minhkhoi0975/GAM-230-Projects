@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * Collectible.cs
+ * Programmer: Khoi Ho
+ * Description: This script handles collectibles.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +13,7 @@ public class Collectible : MonoBehaviour
     public static int collectibleCount = 0;
 
     public int score = 100;
+    public AudioClip pickupSound;
 
     private void Awake()
     {
@@ -15,6 +22,9 @@ public class Collectible : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Play pickup sound.
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position + new Vector3(0.0f, 10.0f, 0.0f));
+
         collectibleCount--;
     }
 

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * GameManager.cs
+ * Programmer: Khoi Ho
+ * Description: This script stores player stats.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

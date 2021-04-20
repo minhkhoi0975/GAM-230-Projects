@@ -1,6 +1,6 @@
 ﻿/**
  * FreeCamera.cs
- * Description: This script allows the player to move the camera freely.
+ * Description: This script allows the player to move the camera freely. Used for debugging.
  * Programmer: Khoi Ho
  */
 

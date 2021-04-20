@@ -156,6 +156,7 @@ MonoBehaviour:
     type: 3}
   explosionPrefab: {fileID: 5861431857214148568, guid: 2b381518c31945041a24dfb0c170609b,
     type: 3}
+  hitSound: {fileID: 8300000, guid: 9242d0b28041763498a42ac05b2cf367, type: 3}
 --- !u!1 &7841154931487485877
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
     type: 3}
   fireRateInSeconds: 0.5
   reloadTimeInSeconds: 1
+  shootingSound: {fileID: 8300000, guid: 1b75865019551dc4f9064ac82e852946, type: 3}
 --- !u!1001 &5414817490658796687
 PrefabInstance:
   m_ObjectHideFlags: 0

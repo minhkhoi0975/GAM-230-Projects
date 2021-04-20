@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * Elevator.cs
+ * Programmer: Khoi Ho (credits to professor Dearbon)
+ * Description: This script attaches the player to an elevator when the player stands on it.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * PlayerCamera.cs
+ * Programmer: Khoi Ho
+ * Description: This script makes a camera follow the player. When the player is destroyed, the game restarts the level or loads the main menu.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,29 +37,30 @@ public class PlayerCamera : MonoBehaviour
         {
             StartCoroutine(GameOver());
         }
+        
     }
 
     IEnumerator GameOver()
     {
         if (!isPlayerDestroyed)
         {
+            isPlayerDestroyed = true;
+
             GameManager.Instance.lives--;
             GameManager.Instance.currentLevelScore = 0;
-            isPlayerDestroyed = true;
-        }
 
-        yield return new WaitForSeconds(5);
+            // Wait for 5 seconds.
+            yield return new WaitForSeconds(5);
 
-        if (GameManager.Instance.lives > 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        else
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
-
-        // This line is added to avoid the coroutine being called rapidly.
-        yield return new WaitForSeconds(100);
+            // If the player still has lives, restart the level. Otherwise, go back to the main menu.
+            if (GameManager.Instance.lives > 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }     
     }
 }
