@@ -57,8 +57,9 @@ public class PlayerTankTurretController : MonoBehaviour
             float newAngle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
 
             // Rotate the turret.
-            Quaternion newRotation = Quaternion.Euler(0f, newAngle, 0f);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime);
+            //Quaternion newRotation = Quaternion.Euler(0f, newAngle, 0f);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0f, newAngle, 0f);
         }
         // Rotate the turret using arrow keys/right stick.
         else
