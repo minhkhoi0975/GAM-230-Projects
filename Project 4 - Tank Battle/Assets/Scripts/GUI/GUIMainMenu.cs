@@ -1,7 +1,7 @@
 ﻿/**
  * ButtonOnClick.cs
  * Programmer: Khoi Ho
- * Description: This script handles mouse clicks on buttons.
+ * Description: This script handles buttons in main menu.
  */
 
 using System.Collections;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonOnClick : MonoBehaviour
+public class GUIMainMenu : MonoBehaviour
 {
     public void StartGame(string sceneName)
     {

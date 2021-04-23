@@ -13,5 +13,6 @@ public class PlayerTankOnDestroy : MonoBehaviour
 {
     public GameObject debrisPrefab;
     public GameObject explosionPrefab;
+    public GameObject smokePrefab;
     public AudioClip hitSound;
 }

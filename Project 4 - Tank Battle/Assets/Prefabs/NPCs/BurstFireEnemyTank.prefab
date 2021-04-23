@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3920418784205180557}
   m_LocalRotation: {x: -0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.14, z: -0.07}
+  m_LocalPosition: {x: 0, y: 10, z: -0.07}
   m_LocalScale: {x: 1.6963999, y: 0.1, z: 1.6963999}
   m_Children: []
   m_Father: {fileID: 5964098099879620395}
@@ -146,11 +146,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76aa05a5e1f4598458e049d8d1b6e8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 10
   score: 1500
   debrisPrefab: {fileID: 7116729151850574281, guid: 97762aa127c00ef46909fe7c626a171b,
     type: 3}
   explosionPrefab: {fileID: 5861431857214148568, guid: 2b381518c31945041a24dfb0c170609b,
+    type: 3}
+  smokePrefab: {fileID: 1633866421119879663, guid: d394d31b715307f4bab5c97de812e1df,
     type: 3}
   hitSound: {fileID: 8300000, guid: 9242d0b28041763498a42ac05b2cf367, type: 3}
 --- !u!195 &7187132894436545137
@@ -218,10 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07998d37e2008c44b85dc79640d786ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: 3
+  ammoCount: 5
   shell: {fileID: 7380184748967298072, guid: 4f65b167f6d3ca444a5d9a32766b694f, type: 3}
-  fireRateInSeconds: 1
-  reloadRateInSeconds: 3
+  fireRateInSeconds: 0.5
+  reloadRateInSeconds: 5
   shellSprayAngle: 30
   shootingSound: {fileID: 8300000, guid: 1b75865019551dc4f9064ac82e852946, type: 3}
 --- !u!1001 &5414817490658796687
@@ -244,12 +246,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 773bf52d67c196a4cae4dbac83828d32,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 773bf52d67c196a4cae4dbac83828d32,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.880001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 773bf52d67c196a4cae4dbac83828d32,
         type: 3}

@@ -44,8 +44,10 @@ public class Shell : MonoBehaviour
                 Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
 
                 // Create debris.
-                GameObject debris = Instantiate(other.gameObject.GetComponent<PlayerTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
-                Destroy(debris, 5.0f);
+                Instantiate(other.gameObject.GetComponent<PlayerTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
+
+                // Create smoke.
+                Instantiate(other.gameObject.GetComponent<PlayerTankOnDestroy>().smokePrefab, other.gameObject.transform.position, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
 
                 // Destroy player tank.
                 Destroy(other.gameObject);            
@@ -70,8 +72,10 @@ public class Shell : MonoBehaviour
                     Destroy(explosion.gameObject, explosion.GetComponent<ParticleSystem>().main.startLifetime.Evaluate(0.0f));
 
                     // Create debris.
-                    GameObject debris = Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
-                    Destroy(debris, 5.0f);
+                    Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().debrisPrefab, other.gameObject.transform.position, other.gameObject.transform.rotation);
+
+                    // Create smoke.
+                    Instantiate(other.gameObject.GetComponent<EnemyTankOnDestroy>().smokePrefab, other.gameObject.transform.position, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
 
                     // Destroy enemy tank.
                     Destroy(other.transform.parent.gameObject);

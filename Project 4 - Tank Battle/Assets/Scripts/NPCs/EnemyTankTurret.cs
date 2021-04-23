@@ -37,7 +37,7 @@ public class EnemyTankTurret : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 0.1f);
 
             // Shoot
-            if (canSeePlayer() && readyToFire)
+            if (CanSeePlayer() && readyToFire)
             {
                 StartCoroutine(Shoot());
             }
@@ -83,7 +83,7 @@ public class EnemyTankTurret : MonoBehaviour
         }
     }
 
-    bool canSeePlayer()
+    bool CanSeePlayer()
     {
         RaycastHit raycastHit;
         if
