@@ -14,10 +14,10 @@ public class PlayerTankTurretController : MonoBehaviour
     // Rotation property
     public float angularSpeed = 240.0f;
 
-    // Combat properties
-    public GameObject shellTemplate;
+    // Combat properties   
     public float fireRateInSeconds = 0.5f;
     public float reloadTimeInSeconds = 1.0f;
+    public GameObject shellTemplate;
     public AudioClip shootingSound;
 
     bool isControlledWithMouse = false; // true = Mouse, false = Arrow Keys/Right Trigger
@@ -34,7 +34,6 @@ public class PlayerTankTurretController : MonoBehaviour
         // Check the kind of input.
         if(mouseInputX != 0 || mouseInputY != 0)
         {
-            Debug.Log("Mouse has moved!");
             isControlledWithMouse = true;
         }
         else if(arrowKeyInput != 0)

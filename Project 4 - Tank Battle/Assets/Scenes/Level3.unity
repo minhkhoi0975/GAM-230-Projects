@@ -435,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 4200345538823558456, guid: f70b418c7a410714096e1b42da47b8d6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4200345538823558456, guid: f70b418c7a410714096e1b42da47b8d6,
         type: 3}
@@ -734,6 +734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingEnemyTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -2524,7 +2529,7 @@ PrefabInstance:
     - target: {fileID: 9200980208530757547, guid: 101b13d0142f1244188af02d5068b7c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9200980208530757547, guid: 101b13d0142f1244188af02d5068b7c8,
         type: 3}
@@ -2899,7 +2904,7 @@ Transform:
   - {fileID: 479221567}
   - {fileID: 785933374}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &654025867
 PrefabInstance:
@@ -3141,7 +3146,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &712604644
 PrefabInstance:
@@ -3222,7 +3227,7 @@ PrefabInstance:
     - target: {fileID: 7464057726038625251, guid: 3996212037deb3943b077319e08737e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7464057726038625251, guid: 3996212037deb3943b077319e08737e6,
         type: 3}
@@ -3291,7 +3296,7 @@ PrefabInstance:
     - target: {fileID: 8180637795959819626, guid: 93cf20b79f7d8884aa0b48ddc2709a96,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8180637795959819626, guid: 93cf20b79f7d8884aa0b48ddc2709a96,
         type: 3}
@@ -3661,8 +3666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalScore: 0
-  lives: 5
-  ammo: 5
+  maxLives: 10
+  maxAmmo: 5
   currentLevelScore: 0
   currentLives: 0
   currentAmmo: 0
@@ -3678,7 +3683,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &921428365
 PrefabInstance:
@@ -4234,6 +4239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingEnemyTank (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
 --- !u!4 &1056688366 stripped
@@ -4317,6 +4327,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1057352270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1092819845
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4682913769972319424, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319425, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: numberOfEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319425, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: spawnDelayInSeconds
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.462593
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.975494
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682913769972319426, guid: 2a1ee27a16b50774ba8b006d1a325818,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a1ee27a16b50774ba8b006d1a325818, type: 3}
 --- !u!4 &1104419760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3472495138292784500, guid: ccaf3caddd60d7146afda98733dee3c5,
@@ -4839,7 +4928,7 @@ Transform:
   - {fileID: 178796969}
   - {fileID: 1330854947}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1321711889
 PrefabInstance:
@@ -4982,6 +5071,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingEnemyTank (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
@@ -6597,7 +6691,7 @@ Transform:
   - {fileID: 1057352271}
   - {fileID: 482800640}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1933602364
 PrefabInstance:

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 7841154931487485877, guid: 525285c3ef4413944a1bf261149f4235, type: 3}
   numberOfEnemies: 5
-  spawnDelayInSeconds: 5
+  spawnDelayInSeconds: 8

@@ -6,8 +6,6 @@ public class StartDelay : MonoBehaviour
 {
     public float timeBeforeLevelStarts = 3.0f;
 
-    float levelStartTime = 0.0f;
-
     private void Start()
     {
         StartCoroutine(Delay());

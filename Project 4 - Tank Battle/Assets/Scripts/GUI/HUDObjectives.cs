@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUDUpdateNumberOfCollectibles : MonoBehaviour
+public class HUDObjectives : MonoBehaviour
 {
     Text text;
 
@@ -16,6 +16,8 @@ public class HUDUpdateNumberOfCollectibles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Collectibles: " + Collectible.collectibleCount;
+        text.text = 
+            "Collectibles: " + Collectible.collectibleCount + "\n"
+            + "Enemies: " + EnemyTankOnDestroy.tankCount;
     }
 }
