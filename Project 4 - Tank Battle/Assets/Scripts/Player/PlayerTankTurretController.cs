@@ -43,7 +43,7 @@ public class PlayerTankTurretController : MonoBehaviour
         }     
         
         // Rotate the turret using mouse.
-        if (isControlledWithMouse)
+        if (isControlledWithMouse && Time.timeScale != 0.0f)
         {
             // Get the position of the mouse on screen space.
             Vector3 mousePosition = Input.mousePosition;
@@ -121,7 +121,7 @@ public class PlayerTankTurretController : MonoBehaviour
         {
             readyToFire = false;
             yield return new WaitForSeconds(reloadTimeInSeconds);
-            GameManager.Instance.currentAmmo = GameManager.Instance.ammo;
+            GameManager.Instance.currentAmmo = GameManager.Instance.maxAmmo;
             readyToFire = true;
         }
     }

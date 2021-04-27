@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
 
     public int totalScore = 0;
-    public int lives = 3;
-    public int ammo = 3;
+    public int maxLives = 10;
+    public int maxAmmo = 5;
 
     public int currentLevelScore = 0;
 
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         // If the instance of this class has not been created, create a new one. Otherwise, do not create another one.
         if (_instance == null)
         {
-            this.currentLives = lives;
-            this.currentAmmo = ammo;
+            this.currentLives = maxLives;
+            this.currentAmmo = maxAmmo;
             _instance = this;
 
             // Do not destroy this object when a new scene is loaded.
@@ -37,8 +37,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            _instance.currentLives = _instance.lives;
-            _instance.currentAmmo = _instance.ammo;
+            _instance.currentAmmo = _instance.maxAmmo;
             _instance.currentLevelScore = 0;
             Destroy(gameObject);
         }
@@ -47,8 +46,8 @@ public class GameManager : MonoBehaviour
     public void ResetPlayerStats()
     {
         _instance.totalScore = 0;
-        _instance.currentLives = _instance.lives;
-        _instance.currentAmmo = _instance.ammo;
+        _instance.currentLives = _instance.maxLives;
+        _instance.currentAmmo = _instance.maxAmmo;
         _instance.currentLevelScore = 0;
     }
 

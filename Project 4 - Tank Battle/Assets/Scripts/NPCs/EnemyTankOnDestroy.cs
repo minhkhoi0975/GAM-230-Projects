@@ -12,8 +12,9 @@ public class EnemyTankOnDestroy : MonoBehaviour
 {
     static public int tankCount = 0;
 
-    public int health = 1;  // How many hits before the tank is destroyed.
-    public int score = 500; // The score the player gains after destroying the tank.
+    public int health = 1;                       // How many hits before the tank is destroyed.
+    public int score = 500;                      // The score the player gains after destroying the tank.
+    public bool canOnlyBeAttackedOnBack = false; // If this is true, then the enemy tank can only be attacked from the back.
 
     public GameObject debrisPrefab;
     public GameObject explosionPrefab;

@@ -24,8 +24,8 @@ public class HUDUpdatePlayerStats : MonoBehaviour
     void Update()
     {
         text.text =
-        "Lives: " + GameManager.Instance.lives + "\n" +
+        "Lives: " + GameManager.Instance.currentLives + "\n" +
         "Score: " + (GameManager.Instance.totalScore + GameManager.Instance.currentLevelScore) + "\n" +
-        "Ammo: " + GameManager.Instance.currentAmmo + "/" + GameManager.Instance.ammo;
+        "Ammo: " + GameManager.Instance.currentAmmo + "/" + GameManager.Instance.maxAmmo;
     }
 }

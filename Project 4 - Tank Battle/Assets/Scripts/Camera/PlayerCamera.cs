@@ -46,14 +46,14 @@ public class PlayerCamera : MonoBehaviour
         {
             isPlayerDestroyed = true;
 
-            GameManager.Instance.lives--;
+            GameManager.Instance.currentLives--;
             GameManager.Instance.currentLevelScore = 0;
 
             // Wait for 5 seconds.
             yield return new WaitForSeconds(5);
 
             // If the player still has lives, restart the level. Otherwise, go back to the main menu.
-            if (GameManager.Instance.lives > 0)
+            if (GameManager.Instance.currentLives > 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }

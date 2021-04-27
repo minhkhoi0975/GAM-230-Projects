@@ -11,6 +11,7 @@ using UnityEngine;
 public class EnemyTankTurret : MonoBehaviour
 {
     // Combat properties
+    public bool canTurretTurn = true;
     public int ammoCount = 3;
     public GameObject shell;
     public float fireRateInSeconds = 1.0f;
@@ -33,8 +34,11 @@ public class EnemyTankTurret : MonoBehaviour
         if(player!=null)
         {
             // Rotate the turret toward the player.
-            Vector3 lookDirectionVector = (player.transform.position - transform.position).normalized;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 0.1f);
+            if (canTurretTurn)
+            {
+                Vector3 lookDirectionVector = (player.transform.position - transform.position).normalized;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 0.1f);
+            }
 
             // Shoot
             if (CanSeePlayer() && readyToFire)

@@ -27,7 +27,6 @@ public class BurstFireEnemyTankTurret : MonoBehaviour
     {
         currentAmmoCount = ammoCount;
         player = GameObject.FindGameObjectWithTag("Player");
-
     }
 
     private void Update()
