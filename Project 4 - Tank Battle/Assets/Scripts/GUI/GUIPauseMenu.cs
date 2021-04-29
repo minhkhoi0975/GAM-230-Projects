@@ -39,6 +39,12 @@ public class GUIPauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    public void Restart()
+    {
+        GameManager.Instance.currentLevelScore = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void GoToMainMenu(string mainMenuScene)
     {
         SceneManager.LoadScene(mainMenuScene);

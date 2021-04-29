@@ -32,7 +32,7 @@ public class PlayerCamera : MonoBehaviour
             gameObject.transform.position = player.transform.position - offset;
         }
 
-        // If the player is destroyed, replay the level if the player still has lives. Otherwise, go back to the main menu.
+        // If the player is destroyed, replay the level if the player still has lives. Otherwise, go to the Game Over scene.
         else
         {
             StartCoroutine(GameOver());
@@ -46,20 +46,26 @@ public class PlayerCamera : MonoBehaviour
         {
             isPlayerDestroyed = true;
 
+            // Decrement the player's number of lives.
             GameManager.Instance.currentLives--;
-            GameManager.Instance.currentLevelScore = 0;
+
+            // If the player still has lives, get rid of the score of the current level.
+            if (GameManager.Instance.currentLives > 0)
+            {
+                GameManager.Instance.currentLevelScore = 0;
+            }
 
             // Wait for 5 seconds.
             yield return new WaitForSeconds(5);
 
-            // If the player still has lives, restart the level. Otherwise, go back to the main menu.
+            // If the player still has lives, restart the level. Otherwise, go to the Game Over scene.
             if (GameManager.Instance.currentLives > 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             else
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("GameOver");
             }
         }     
     }

@@ -11,10 +11,15 @@ using UnityEngine.SceneManagement;
 
 public class GUIMainMenu : MonoBehaviour
 {
-    public void StartGame(string sceneName)
+    public void StartGame(string firstLevel)
     {
         GameManager.Instance.ResetPlayerStats();
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(firstLevel);
+    }
+
+    public void HighScores(string highScoreScene)
+    {
+        SceneManager.LoadScene(highScoreScene);
     }
 
     public void ExitGame()
