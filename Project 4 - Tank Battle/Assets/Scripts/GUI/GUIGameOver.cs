@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * GUIGameOver.cs
+ * Programmer: Khoi Ho
+ * Description: This script handles the GUI of the "Game Over" Scene.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

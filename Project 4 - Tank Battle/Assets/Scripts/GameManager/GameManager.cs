@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // This function is used when the player starts the first level.
     public void ResetPlayerStats()
     {
         _instance.totalScore = 0;

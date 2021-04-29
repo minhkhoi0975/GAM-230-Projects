@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * HighScoreManager.cs
+ * Programmer: Khoi Ho
+ * Description: This script loads, updates, and saves the list of high scores.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -18,10 +24,11 @@ public class ScoreEntry
 
 public class HighScoreManager : MonoBehaviour
 {
-    public List<ScoreEntry> highScores = new List<ScoreEntry>();
-
     // The name of the file that contains high scores.
-    const string highScoreFileName = "highscore.txt";
+    const string HIGH_SCORE_FILE_NAME = "highscore.txt";
+
+    // List of high scores.
+    public List<ScoreEntry> highScores = new List<ScoreEntry>();
 
     // Start is called before the first frame update
     void Awake()
@@ -29,25 +36,21 @@ public class HighScoreManager : MonoBehaviour
         // Load high score from the file.
         LoadHighScore();
 
-        // Update the high score when current scene is "Game Over".
+        // Update the high score if current scene is "Game Over".
         if(SceneManager.GetActiveScene().name == "GameOver")
         {
             UpdateHighScore();
             SaveHighScore();
-        }
-
-        // Show high scores.
-        for(int i = 0; i < highScores.Count; i++)
-        {
-            Debug.Log(highScores[i].name + " " + highScores[i].score);
         }
     }
 
     // Update the list of high scores.
     public void UpdateHighScore()
     {
+        // Get the score from the previous game.
         ScoreEntry previousScore = new ScoreEntry(GameManager.Instance.playerName, GameManager.Instance.totalScore);
 
+        // Check if this score is higher than any scores on top.
         for (int i = 0; i < highScores.Count; i++)
         {
             if (previousScore.score > highScores[i].score)
@@ -57,6 +60,7 @@ public class HighScoreManager : MonoBehaviour
             }
         }
 
+        // If this score is the lowest, add it to the end of the list.
         highScores.Add(previousScore);
     }
 
@@ -66,12 +70,10 @@ public class HighScoreManager : MonoBehaviour
         highScores.Clear();
 
         // Check if the high score file exists.
-        if (File.Exists(Application.persistentDataPath + "/" + highScoreFileName))
+        if (File.Exists(Application.persistentDataPath + "/" + HIGH_SCORE_FILE_NAME))
         {
-            Debug.Log(Application.persistentDataPath + "/" + highScoreFileName);
-
             // Open the file.
-            StreamReader highScoreFileStream = new StreamReader(Application.persistentDataPath + "/" + highScoreFileName);
+            StreamReader highScoreFileStream = new StreamReader(Application.persistentDataPath + "/" + HIGH_SCORE_FILE_NAME);
 
             // Load the high scores from the file.
             while(!highScoreFileStream.EndOfStream)
@@ -89,7 +91,7 @@ public class HighScoreManager : MonoBehaviour
     public void SaveHighScore()
     {
         // Open the high score file.
-        StreamWriter highScoreFileStream = new StreamWriter(Application.persistentDataPath + "/" + highScoreFileName, false);
+        StreamWriter highScoreFileStream = new StreamWriter(Application.persistentDataPath + "/" + HIGH_SCORE_FILE_NAME, false);
 
         // Save the scores.
         for (int i = 0; i < highScores.Count; i++)
@@ -98,6 +100,7 @@ public class HighScoreManager : MonoBehaviour
             highScoreFileStream.WriteLine(highScores[i].score);
         }
 
+        // Close the file.
         highScoreFileStream.Close();
     }
 }
