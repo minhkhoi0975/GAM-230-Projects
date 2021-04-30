@@ -1,11 +1,19 @@
-﻿using System.Collections;
+﻿/**
+ * GUIPauseMenu.cs
+ * Programmer: Khoi Ho
+ * Description: This script handles the buttons in the "Paused" panel.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GUIPauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    public GameObject pauseMenu; // Reference to the pause menu panel.
+    public GameObject textStarting; // Reference to the "Starting..." text.
+
     bool isPaused;
 
     // Start is called before the first frame update
@@ -17,7 +25,8 @@ public class GUIPauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        // Do not let the player pause the game when the "Starting..." text still exists.
+        if(Input.GetButtonDown("Cancel") && textStarting == null)
         {
             if(isPaused)
             {

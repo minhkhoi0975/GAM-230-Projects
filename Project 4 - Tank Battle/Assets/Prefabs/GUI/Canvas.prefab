@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6594628479533061504}
   - component: {fileID: 2873551162251775012}
   m_Layer: 5
-  m_Name: TextReady
+  m_Name: TextStarting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7732869461979191025}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3534219, y: 0.37}
   m_AnchorMax: {x: 0.648, y: 0.62960416}
@@ -719,8 +719,8 @@ RectTransform:
   - {fileID: 7732869463443477093}
   - {fileID: 2919578278726179354}
   - {fileID: 7732869461882627835}
-  - {fileID: 7732869463489374132}
   - {fileID: 3741234391857916153}
+  - {fileID: 7732869463489374132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -802,6 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 7732869463489374123}
+  textStart: {fileID: 166532987285547004}
 --- !u!1 &7732869461987013389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1220,7 @@ RectTransform:
   - {fileID: 8713683623235093161}
   - {fileID: 7732869461612805981}
   m_Father: {fileID: 7732869461979191025}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

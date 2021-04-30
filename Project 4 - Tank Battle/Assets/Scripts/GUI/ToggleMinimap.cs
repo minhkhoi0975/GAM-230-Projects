@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * ToggleMinimap.cs
+ * Programmer: Khoi Ho
+ * Description: This script allows the player to toggle/untoggle the minimap.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,12 +12,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(RawImage))]
 public class ToggleMinimap : MonoBehaviour
 {
-    RawImage rawImage;
+    RawImage minimap;
 
     // Start is called before the first frame update
     void Start()
     {
-        rawImage = GetComponent<RawImage>();
+        minimap = GetComponent<RawImage>();
     }
 
     // Update is called once per frame
@@ -19,7 +25,7 @@ public class ToggleMinimap : MonoBehaviour
     {
         if(Input.GetButtonDown("ToggleMinimap"))
         {
-            rawImage.enabled = !rawImage.enabled;
+            minimap.enabled = !minimap.enabled;
         }
     }
 }

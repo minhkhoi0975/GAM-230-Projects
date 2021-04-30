@@ -37,18 +37,24 @@ public class PlayerTankWheelController : MonoBehaviour
         Vector3 moveVelocity = vertical * transform.forward * moveSpeed * Time.fixedDeltaTime;
 
         // Dash.
-        if( dash != 0.0f && isDashReady)
+        if(dash != 0.0f && isDashReady)
         {
+            // Delay dash.
             StartCoroutine(DelayDash());
+
+            // Dash forward if the player is staying still or moving forward.
             if (Vector3.Dot(moveVelocity.normalized, transform.forward) >= 0.0f)
             {
                 moveVelocity = transform.forward * dashSpeed * Time.fixedDeltaTime;
             }
+
+            // Dash backward if the player is moving backward.
             else
             {
                 moveVelocity = -transform.forward * dashSpeed * Time.fixedDeltaTime;
             }
         }  
+
         rigidBody.AddForce(moveVelocity, ForceMode.Impulse);
 
         // Rotate the player.

@@ -1,7 +1,7 @@
 ﻿/**
  * Shell.cs
  * Programmer: Khoi Ho (credits to professor Dearbon)
- * Description: This script handles the movement of a shell. When the shell hits the player or an enemy tank, it will create a debris model and explosion effect.
+ * Description: This script handles the movement of a shell. When the shell hits the player or an enemy tank, it will create debris and explosion.
  */
 
 using System.Collections;

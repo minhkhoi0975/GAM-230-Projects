@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * HUDObjectives.cs
+ * Programmer: Khoi Ho
+ * Description: This script displays the number of collectibles and enemies in the level.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

@@ -1,7 +1,7 @@
 ﻿/**
  * HUDUpdatePlayerStats.cs
  * Programmer: Khoi Ho
- * Description: This script updates the player stats on HUD.
+ * Description: This script displays Player's stats.
  */
 
 using System.Collections;

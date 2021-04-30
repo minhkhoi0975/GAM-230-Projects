@@ -22,9 +22,6 @@ public class Collectible : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Play pickup sound.
-        AudioSource.PlayClipAtPoint(pickupSound, transform.position + new Vector3(0.0f, 10.0f, 0.0f));
-
         collectibleCount--;
     }
 
@@ -39,7 +36,13 @@ public class Collectible : MonoBehaviour
         // If the player touches the collectible, destroy the collectible and increase player's score.
         if (other.CompareTag("Player"))
         {
+            // Add score to the player. 
             GameManager.Instance.currentLevelScore += score;
+
+            // Play pickup sound.
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position + new Vector3(0.0f, 10.0f, 0.0f));
+
+            // Destroy the collectible.
             Destroy(gameObject);
         }
     }  
